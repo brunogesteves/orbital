@@ -60,12 +60,12 @@
     </div>
 </div>
 <div class="flex justify-between mt-2 w-full">
-    <div class="w-5/12 flex flex-col justify-between item-start pb-5 pl-7">
+    <div class="w-5/12 flex flex-col justify-between item-start pb-10 pl-7">
         <?php foreach ($posts3 as $post) : ?>
             <div class="flex w-full my-5 border-l-4 border-red-500 h-7">
                 <a href=/<?= $post["slug"] ?>>
                     <p class="text-[18px] font-bold break-words text-left pl-2">
-                        <?= mb_convert_case($post["title"], MB_CASE_TITLE, "UTF-8");; ?>...
+                        <?= mb_convert_case($post["title"], MB_CASE_TITLE, "UTF-8"); ?>...
                     </p>
                 </a>
             </div>
@@ -77,7 +77,7 @@
                 <a href=/<?= $post["slug"] ?> class="w-full h-full">
                     <img src=<?= $post["source"] == "Orbital Channel" ? "/images/$post[image]" :  $post["image"] ?> alt="" class="h-3/4 w-full" />
                     <span class="text-[18px] font-bold break-words text-left">
-                        <?= mb_convert_case(substr($post["title"], 0, 62), MB_CASE_TITLE, "UTF-8");; ?>...
+                        <?= mb_convert_case(substr($post["title"], 0, 62), MB_CASE_TITLE, "UTF-8"); ?>...
                     </span>
                 </a>
             </div>

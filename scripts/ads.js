@@ -1,10 +1,5 @@
 $(document).ready(function () {
-  $("#dd").text("jquery funcionando");
   $("#adFileUpload").on("change", function () {
-    $(".dd").text("coloca foto");
-
-    var imgPath = $(this)[0].value;
-
     if (typeof FileReader != "undefined") {
       var previewInputImage = $("#previewInputAdImage");
       previewInputImage.empty();
@@ -24,8 +19,6 @@ $(document).ready(function () {
     $(".previewUploadInputAdImage").hide();
     var index = $(".adUpdateFileUpload").index(this);
 
-    var imgPath = $(this)[0].value;
-
     if (typeof FileReader != "undefined") {
       var previewUploadInputAdImage = $(
         `.previewUploadInputAdImage:eq(${index})`
@@ -43,18 +36,11 @@ $(document).ready(function () {
     }
   });
 
-  if ($("#newModalhasErrors").val() > 0) {
-    // $(`.newAdModal`).show();
-    $(`.fullscreen.newAdModal`).modal("toggle");
-  }
-
   $(".openNewModalbtn").on("click", function () {
-    // $(`.newAdModal`).show();
     $(`.fullscreen.newAdModal`).modal("toggle");
   });
 
   $(".closeNewAdModalbtn").on("click", function () {
-    // $(`.newAdModal`).hide();
     $(`.fullscreen.newAdModal`).modal("toggle");
   });
 
@@ -65,7 +51,6 @@ $(document).ready(function () {
 
   $(".closeUpdateAdModalbtn").on("click", function () {
     var index = $(".closeUpdateAdModalbtn").index(this);
-    console.log(index);
     $(`.fullscreen.updateAdModal:eq(${index})`).modal("toggle");
   });
 
@@ -84,5 +69,34 @@ $(document).ready(function () {
   });
   $("#menu_tablet_open").on("click", function () {
     $(".ui.sidebar").sidebar("toggle");
+  });
+
+  const tabs = ["mobileAdsfront", "mobileAdsMobile", "mobileAdsSlide"];
+  $(".selectAdTab").change(function (e) {
+    for (let index = 0; index < tabs.length; index++) {
+      if (tabs[index] == e.target.value) {
+        $(`#${tabs[index]}`).removeClass("hidden");
+      } else {
+        $(`#${tabs[index]}`).addClass("hidden");
+      }
+    }
+  });
+
+  var fixmeTop = $(".selectAdTab").offset().top;
+
+  $(window).scroll(function () {
+    var currentScroll = $(window).scrollTop();
+
+    if (currentScroll >= fixmeTop) {
+      $(".selectAdTab").css({
+        position: "fixed",
+        top: "0",
+        left: "0",
+      });
+    } else {
+      $(".selectAdTab").css({
+        position: "static",
+      });
+    }
   });
 });

@@ -4,7 +4,7 @@
         include "views/partials/admin/sidebar.php";
         ?>
     </div>
-    <main class="w-10/12">
+    <section class="w-10/12">
         <div class="flex flex-col h-auto overflow-y-auto w-full relative">
             <div class="ui top attached tabular menu">
                 <a class="item active" data-tab="orbital">Orbital</a>
@@ -29,7 +29,7 @@
                         <p class="w-5 section">
                             <?= $post["section"] ?>
                         </p>
-                        <p class="w-24">
+                        <p class="w-24 startsAt">
                             <?= date("d-m-Y h:i ", $post["post_at"]) ?>
                         </p>
                         <p class="w-20 status">
@@ -225,7 +225,7 @@
 
                 <?php endforeach; ?>
             </div>
-            <div class="ui bottom attached tab segment h-[calc(100vh_-_250px)] overflow-y-auto" data-tab="automatics">
+            <div class="ui bottom attached tab segment h-[calc(100vh_-_200px)] overflow-y-auto" data-tab="automatics">
 
                 <?php
                 foreach ($autoposts as $post) : ?>
@@ -245,7 +245,7 @@
                         </p>
                         <p class="w-20 status">
                             <?= $post["status"] == "on" ? "Publicado" : "Fora do Ar" ?>
-                        </p>                                                
+                        </p>
                         <input type="hidden" class="w-20 image" value="<?= $post["image"] ?>" />
                         <input type="hidden" class="w-20 postContent" value="<?= $post["content"] ?>" />
                         <div class="flex gap-x-1">
@@ -261,7 +261,7 @@
 
 
         </div>
-    </main>
+    </section>
 
     <!-- MODAL -->
     <div class="ui modal fullscreen modalArea two column grid h-fit">
@@ -291,12 +291,12 @@
             </div>
         </div>
         <div class="actions">
-            <div class="flex justify-end items-center p-3 gap-x-3 h-14">
-                <button type="button" id="closeModalBtn" class="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-white mr-1">
+            <div class="flex max-[425px]:flex-col justify-end items-center p-3 gap-x-3 ">
+                <button type="button" id="closeModalBtn" class="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-white mr-1 max-[425px]:mb-3">
                     Fechar
                 </button>
-                <div id="editPostPublish" class="flex justify-center items-center gap-x-3"></div>
+                <div id="editPostPublish"  class="flex max-[425px]:flex-col justify-center items-center gap-x-3 max-[425px]:gap-y-3"></div>
             </div>
         </div>
-        <script src="/scripts/posts.js" defer></script>
     </div>
+</div>

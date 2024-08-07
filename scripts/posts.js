@@ -1,7 +1,6 @@
 $(document).ready(() => {
   $(".openModalBtn").click(function () {
     var index = $(".openModalBtn").index(this);
-    console.log(index);
 
     const image = $(".image")
       .eq(index + 1)
@@ -13,7 +12,6 @@ $(document).ready(() => {
     const status = $(".status").eq(index).text().trim();
     const content = $(".postContent").eq(index).val();
     const postId = $(".postId").eq(index).val();
-    console.log(post_at);
     $("#modalAreaTitle").text(title);
     $("#modalAreaSource").text(source);
     $("#modalAreaSection").text(section);
@@ -67,12 +65,12 @@ $(document).ready(() => {
       );
       $("#editPostPublish").html(`
           <form method="post" action="admin/update">
-              <input type="hidden" name="ExtPostStatusId" value=${postId} />
-              <input type="hidden" name="StatusChangeExtPostStatus" value=${
+              <input type="hidden" name="extPostStatusId" value=${postId} />
+              <input type="hidden" name="statusChangeExtPostStatus" value=${
                 status == "Publicado" ? "off" : "on"
               }  />
               <button type="submit" name="_method" value="put"
-                  class="bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-white cursor-pointer">
+                  class="bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-white cursor-pointer ">
                   ${status == "Publicado" ? "Despublicar" : "Publicar"} 
               </button>
           </form>
@@ -86,11 +84,11 @@ $(document).ready(() => {
                 </select>	
                 <input type="hidden" name="sectionUpdateExtPostId" value=${postId} />                
                 <button type="submit" name="_method" value="put"
-                  class="bg-blue-600 hover:bg-blue-700 px-3 py-1 mx-3 rounded text-white cursor-pointer">
+                  class="bg-blue-600 hover:bg-blue-700 px-3 py-1 ml-1 mr-3 rounded text-white cursor-pointer">
                   Atualizar seção
                 </button>
           </form>          
-          <form method="post" action="admin/update">
+          <form method="post" action="admin/update" class="max-[425px]:flex max-[425px]:flex-col max-[425px]:justify-center max-[425px]:gap-y-2">
                 <input type="hidden" name="updateHourExtPostId" value=${postId} />
                 <input id="exPostUpdateHour" type="datetime-local" name="updateHourExtPost" min=${new Date()
                   .toISOString()
@@ -117,4 +115,41 @@ $(document).ready(() => {
   });
 
   $(".menu .item").tab();
+
+  const tabs = [
+    "mobilePosts",
+    "mobileExternal",
+    "mobileN1",
+    "mobileN2",
+    "mobileN3",
+    "mobileN4",
+    "mobileAutomaticos",
+  ];
+  $(".selectTab").change(function (e) {
+    for (let index = 0; index < tabs.length; index++) {
+      if (tabs[index] == e.target.value) {
+        $(`#${tabs[index]}`).removeClass("hidden");
+      } else {
+        $(`#${tabs[index]}`).addClass("hidden");
+      }
+    }
+  });
+
+  var fixmeTop = $(".selectTab").offset().top;
+
+  $(window).scroll(function () {
+    var currentScroll = $(window).scrollTop();
+
+    if (currentScroll >= fixmeTop) {
+      $(".selectTab").css({
+        position: "fixed",
+        top: "0",
+        left: "0",
+      });
+    } else {
+      $(".selectTab").css({
+        position: "static",
+      });
+    }
+  });
 });

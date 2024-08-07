@@ -4,20 +4,15 @@ $(document).ready(() => {
     rules: {
       title: "required",
       post_at: "required",
-
       image_id: "required",
       content: "required",
     },
-    // Specify validation error messages
     messages: {
       title: "<p class='text-red-500'>Escolha um título</p>",
       post_at: "<p class='text-red-500'>Escolha uma data</p>",
-
       image_id: "<p class='text-red-500'>Escolha uma thumb</p>",
       content: "<p class='text-red-500'>Conteúdo Obrigatório</p>",
     },
-    // Make sure the form is submitted to the destination defined
-    // in the "action" attribute of the form when valid
     submitHandler: function (form) {
       form.submit();
     },
@@ -28,20 +23,61 @@ $(document).ready(() => {
     rules: {
       title: "required",
       post_at: "required",
-
       image_id: "required",
       content: "required",
     },
-    // Specify validation error messages
+
     messages: {
       title: "<p class='text-red-500'>Escolha um título</p>",
-      post_at: "<p class='text-red-500'>Escolha uma data</p>",
+      adFile: "<p class='text-red-500'>Escolha uma data</p>",
 
       image_id: "<p class='text-red-500'>Escolha uma thumb</p>",
       content: "<p class='text-red-500'>Conteúdo Obrigatório</p>",
     },
-    // Make sure the form is submitted to the destination defined
-    // in the "action" attribute of the form when valid
+    submitHandler: function (form) {
+      form.submit();
+    },
+  });
+
+  $(".newAd").validate({
+    ignore: "",
+    rules: {
+      adName: "required",
+      adFile: "required",
+      adLink: "required",
+      adStarts_at: "required",
+      adFinishs_at: "required",
+    },
+
+    messages: {
+      adName: "<p class='text-red-500'>Escolha um título</p>",
+      adFile: "<p class='text-red-500'>Selecione uma foto</p>",
+      adLink: "<p class='text-red-500'>Digite o link</p>",
+      adStarts_at: "<p class='text-red-500'>Selecione a hora inicial</p>",
+      adFinishs_at: "<p class='text-red-500'>Selecione a hora final</p>",
+    },
+    submitHandler: function (form) {
+      form.submit();
+    },
+  });
+
+  $(".updateAd").validate({
+    ignore: "",
+    rules: {
+      adName: "required",
+      adFile: "required",
+      adLink: "required",
+      adStarts_at: "required",
+      adFinishs_at: "required",
+    },
+
+    messages: {
+      adName: "<p class='text-red-500'>Escolha um título</p>",
+      adFile: "<p class='text-red-500'>Selecione uma foto</p>",
+      adLink: "<p class='text-red-500'>Digite o link</p>",
+      adStarts_at: "<p class='text-red-500'>Selecione a hora inicial</p>",
+      adFinishs_at: "<p class='text-red-500'>Selecione a hora final</p>",
+    },
     submitHandler: function (form) {
       form.submit();
     },

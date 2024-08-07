@@ -30,3 +30,4 @@ include(__DIR__ . "/../../views/partials/admin/headerAdmin.php");
 include(__DIR__ . "/../../views/partials/admin/footer.php");
 
 ?>
+<script src="/scripts/ads.js" defer></script>

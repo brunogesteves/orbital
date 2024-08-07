@@ -7,7 +7,6 @@ $db = new Database();
 $currentDate = new DateTime("now", new DateTimeZone('America/Sao_Paulo'));
 
 
-var_dump($_POST);
 if ($_POST["changeLogotype"]) {
     $logotype = $_POST["changeLogotype"];
     $sourceImage = 'images/' . $_POST["changeLogotype"];
@@ -16,10 +15,9 @@ if ($_POST["changeLogotype"]) {
     
 }
 
-if ($_POST["StatusChangeExtPostStatus"]) {
-    var_dump("staus");
-    $status = $_POST["StatusChangeExtPostStatus"];  
-    $id = (int) $_POST["ExtPostStatusId"];
+if ($_POST["statusChangeExtPostStatus"]) {    
+    $status = $_POST["statusChangeExtPostStatus"];  
+    $id = (int) $_POST["extPostStatusId"];
 
     $result = $db->update("UPDATE extposts SET status='$status' WHERE id=$id");
     header('Location: ' . "/admin");
@@ -43,6 +41,6 @@ if ($_POST["sectionUpdateExtPost"]) {
 if ($_POST["updateHourExtPost"]) {        
     $updateTime = strtotime($_POST["updateHourExtPost"]);
     $id = (int) $_POST["updateHourExtPostId"];    
-    $result = $db->update("UPDATE extposts SET post_at=$updateTime   WHERE id=$id");
+    $result = $db->update("UPDATE extposts SET post_at=$updateTime  WHERE id=$id");
     header('Location: ' . "/admin");
 }
