@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  background-color:green;
+  height: 100vh;
+  font-size: 4rem;
+  
+  
+  
+  }
+  
+</style>
+  </head>
+  <body>
+    <h1 id="time"></h1>
+
+    <script>
+
+        var color =[ "green","red", "yellow", "blue"];
+        let currentColor = 0;
+        setInterval(() => {
+            let timeNow = new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
+             document.querySelector('#time').innerHTML = timeNow;
+            
+        }, 1000);
+        setInterval(function() {
+            document.querySelector('body').style.background = color[currentColor];
+            if(currentColor >3){
+                currentColor=0                
+                }else{
+                    currentColor++
+                }
+        
+        
+        }, 5000);
+    </script>
+  </body>
+</html>
