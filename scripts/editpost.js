@@ -1,6 +1,8 @@
 $(document).ready(() => {
   $(".previewEditImage").html(
-    `<img src=../images/${$(".oldImageThumb").val()} class="max-h-72" />`
+    `<img src=../images/${$(
+      ".oldImageThumbComputer"
+    ).val()} class="max-h-72" />`
   );
 
   const schedule = new Date($(".oldPost_at").val() * 1000)
@@ -60,7 +62,7 @@ $(document).ready(() => {
             "imageGallery",
             "fullScreen",
             "showBlocks",
-            //   "codeView",
+            "codeView",
             "preview",
             "print",
             "save",
@@ -73,13 +75,11 @@ $(document).ready(() => {
     );
     editor.onChange = function (contents) {
       $(".content").val(contents);
-      $(".oldContent").val(contents);
+      $(".oldContentComputer").val(contents);
     };
-
-    editor.setContents($(".oldContent").val());
+    editor.setContents($(".oldContentComputer").val());
   }
-
-  // }  editor.insertHTML(editorContent);
+  console.log("hrml: ", $(".oldContentComputer").val());
 
   $(".openEditImageModalBtn").on("click", () => {
     $(".editImageModal").modal("show");
@@ -117,10 +117,4 @@ $(document).ready(() => {
   $(".ui.dimmable").dimmer({
     on: "hover",
   });
-
-  // if ($(".oldPost_at").val() < Date.now()) {
-  //   $(".post_at").prop("disabled", true);
-  // } else {
-  //   $(".post_at").prop("disabled", false);
-  // }
 });

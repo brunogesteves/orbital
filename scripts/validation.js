@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  $("form[name='addpost']").validate({
+  $(".addpost").validate({
     ignore: "",
     rules: {
       title: "required",
@@ -65,7 +65,6 @@ $(document).ready(() => {
     ignore: "",
     rules: {
       adName: "required",
-      adFile: "required",
       adLink: "required",
       adStarts_at: "required",
       adFinishs_at: "required",
@@ -73,7 +72,6 @@ $(document).ready(() => {
 
     messages: {
       adName: "<p class='text-red-500'>Escolha um título</p>",
-      adFile: "<p class='text-red-500'>Selecione uma foto</p>",
       adLink: "<p class='text-red-500'>Digite o link</p>",
       adStarts_at: "<p class='text-red-500'>Selecione a hora inicial</p>",
       adFinishs_at: "<p class='text-red-500'>Selecione a hora final</p>",

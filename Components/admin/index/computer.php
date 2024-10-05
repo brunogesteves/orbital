@@ -93,12 +93,12 @@
 
                 <?php endforeach; ?>
             </div>
-            <div class="ui bottom attached tab segment h-[calc(100vh_-_200px)] overflow-y-auto" data-tab="level1">
-                No momento : <span class="<?= sizeof($posts1) > 4  ? 'text-red-500' : 'text-black-500' ?>"> <?= sizeof($posts1) ?></span>/4
+             <div class="ui bottom attached tab segment h-[calc(100vh_-_200px)] overflow-y-auto" data-tab="level1">
+                No momento : <span class="<?= sizeof($posts1) > 4 ? 'text-red-500' : 'text-black-500' ?>"> <?= sizeof($posts1) ?></span>/4
                 <?php
                 foreach ($posts1 as $post) : ?>
                     <div class="flex justify-between items-center h-auto w-full my-2 px-3 py-2 gap-x-1">
-                        <img src=<?= $post["source"] == "Orbital Channel" ? "/images/$post[image]" :  $post["image"] ?> class="w-20 object-contain" />
+                        <img src=<?= $post["source"] == "Orbital Channel" ? "/images/$post[image]" :  $post["image"] ?> alt="" class="w-20 object-contain" />
                         <p class="w-96 title">
                             <?= $post["title"] ?>
                         </p>
@@ -126,12 +126,12 @@
 
                 <?php endforeach; ?>
             </div>
-            <div class="ui bottom attached tab segment h-[calc(100vh_-_200px)] overflow-y-auto" data-tab="level2">
-                No momento : <span class="<?= sizeof($posts2) > 4  ? 'text-red-500' : 'text-black-500' ?>"> <?= sizeof($posts2) ?></span>/4
+             <div class="ui bottom attached tab segment h-[calc(100vh_-_200px)] overflow-y-auto" data-tab="level2">
+                No momento : <span class="<?= sizeof($posts2) > 4 ? 'text-red-500' : 'text-black-500' ?>"> <?= sizeof($posts2) ?></span>/4
                 <?php
                 foreach ($posts2 as $post) : ?>
                     <div class="flex justify-between items-center h-auto w-full my-2 px-3 py-2 gap-x-1">
-                        <img src=<?= $post["source"] == "Orbital Channel" ? "/images/$post[image]" :  $post["image"] ?> class="w-20 object-contain" />
+                        <img src=<?= $post["source"] == "Orbital Channel" ? "/images/$post[image]" :  $post["image"] ?> alt="" class="w-20 object-contain" />
                         <p class="w-96 title">
                             <?= $post["title"] ?>
                         </p>
@@ -159,12 +159,12 @@
 
                 <?php endforeach; ?>
             </div>
-            <div class="ui bottom attached tab segment h-[calc(100vh_-_200px)] overflow-y-auto" data-tab="level3">
-                No momento : <span class="<?= sizeof($posts3) > 8 ? 'text-red-500' : 'text-black-500' ?>"> <?= sizeof($posts3) ?></span>/7
+                       <div class="ui bottom attached tab segment h-[calc(100vh_-_200px)] overflow-y-auto" data-tab="level3">
+                No momento : <span class="<?= sizeof($posts3) > 7 ? 'text-red-500' : 'text-black-500' ?>"> <?= sizeof($posts3) ?></span>/7
                 <?php
                 foreach ($posts3 as $post) : ?>
                     <div class="flex justify-between items-center h-auto w-full my-2 px-3 py-2 gap-x-1">
-                        <img src=<?= $post["source"] == "Orbital Channel" ? "/images/$post[image]" :  $post["image"] ?> class="w-20 object-contain" />
+                        <img src=<?= $post["source"] == "Orbital Channel" ? "/images/$post[image]" :  $post["image"] ?> alt="" class="w-20 object-contain" />
                         <p class="w-96 title">
                             <?= $post["title"] ?>
                         </p>

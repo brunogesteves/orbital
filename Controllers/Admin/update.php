@@ -6,6 +6,7 @@ use Core\Database;
 $db = new Database();
 $currentDate = new DateTime("now", new DateTimeZone('America/Sao_Paulo'));
 
+// var_dump($_POST);
 
 if ($_POST["changeLogotype"]) {
     $logotype = $_POST["changeLogotype"];
@@ -15,9 +16,22 @@ if ($_POST["changeLogotype"]) {
     
 }
 
+
+
+if ($_POST["UpdateStatusId"]) {    
+var_dump($_POST["UpdateStatusId"]);
+var_dump($_POST["UpdateStatus"]);
+    $status = $_POST["UpdateStatus"];  
+    $id = (int) $_POST["UpdateStatusId"];
+
+
+    $result = $db->update("UPDATE posts SET status='$status' WHERE id=$id");
+    header('Location: ' . "/admin");
+}
+
 if ($_POST["statusChangeExtPostStatus"]) {    
     $status = $_POST["statusChangeExtPostStatus"];  
-    $id = (int) $_POST["extPostStatusId"];
+    $id = (int) $_POST["statusChangeExtPostStatusId"];
 
     $result = $db->update("UPDATE extposts SET status='$status' WHERE id=$id");
     header('Location: ' . "/admin");

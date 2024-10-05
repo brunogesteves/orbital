@@ -18,7 +18,7 @@
         <?php endforeach; ?>
     </div>
     <div class="flex justify-start items-center py-3 pl-5  gap-x-3 w-full">
-        <img src="/images/icons/menu.svg" alt="logo" class="rounded-full mt-3 mt-1 w-7 h-7" id="menu_mobile_open" />
+        <img src="/images/icons/menuWhite.svg" alt="logo" class="rounded-full mt-3 mt-1 w-7 h-7" id="menu_mobile_open" />
         <a href="/"> <img src="/images/orbital/logo.png" alt="logo" class="rounded-full -mt-2 w-16 h-16 object-center" /></a>
         <div class="mt-2">
             <a href="/"> <span class="text-white text-2xl font-black font-sans">ORBITAL CHANNEL</span></a>
@@ -28,11 +28,11 @@
 <div class="w-full h-20 flex justify-evenly items-center shadow-lg font-bold px-5">
     <div class="flex flex-col w-6/12" id="stockHomeMobile">Carregando..</div>
     <div id="grad1" class="1/12"></div>
-    <div id="foreCastHomeMobile" class="w-6/12">Carregando..</div>    
+    <div id="foreCastHomeMobile" class="w-6/12">Carregando..</div>
 </div>
 <div class="flex flex-col m-5">
     <?php foreach ($posts1 as $post) : ?>
-        <div class="w-full my-1">
+        <div class="w-full my-1 ">
             <a href=/<?= $post["slug"] ?> class="flex">
                 <span class="border-l-4 pl-1 border-red-500 h-7"></span>
                 <p class="text-[18px] font-extrabold text-left"><?= $post["title"] ?></p>
@@ -58,7 +58,7 @@
     <div class=" h-auto px-5 my-1 h-[100px]">
         <a href=/<?= $post["slug"] ?> class="flex gap-x-2 w-full h-full">
             <div class="w-5/12  h-full">
-                <img src=<?= $post["source"] == "Orbital Channel" ? "/images/$post[image]" :  $post["image"] ?> alt="" class="object-fill w-full h-full" />
+                <img src=<?= $post["source"] == "Orbital Channel" ? "/images/$post[image]" :  $post["image"] ?> alt="" class="object-fill w-full h-[100px]" />
             </div>
             <div class="w-7/12">
                 <p class="text-[18px] font-extrabold text-left">
@@ -70,7 +70,7 @@
 <?php endforeach; ?>
 <?php foreach ($posts4 as $post) : ?>
     <div class=" h-auto px-5 my-1 h-[100px]">
-        <a href=/<?= $post["slug"] ?> class="flex gap-x-2 w-full h-full">
+        <a href=/<?= $post["slug"] ?> class="flex gap-x-2 w-full h-[100px]">
             <div class="w-5/12  h-full">
                 <img src=<?= $post["source"] == "Orbital Channel" ? "/images/$post[image]" :  $post["image"] ?> alt="" class="object-fill w-full h-full" />
             </div>

@@ -48,8 +48,8 @@ $(document).ready(() => {
                   Editar
            </a>      
            <form method="post" action="admin/update">
-                <input type="hidden" name="UpdateStatusId" value="2024-05-42T03:24" />
-                <input type="hidden" name="status" value=${
+                <input type="hidden" name="UpdateStatusId" value=${postId} />
+                <input type="hidden" name="UpdateStatus" value=${
                   status == "Publicado" ? "off" : "on"
                 }  />
                 <button type="submit" name="_method" value="put"
@@ -65,7 +65,7 @@ $(document).ready(() => {
       );
       $("#editPostPublish").html(`
           <form method="post" action="admin/update">
-              <input type="hidden" name="extPostStatusId" value=${postId} />
+              <input type="hidden" name="statusChangeExtPostStatusId" value=${postId} />
               <input type="hidden" name="statusChangeExtPostStatus" value=${
                 status == "Publicado" ? "off" : "on"
               }  />

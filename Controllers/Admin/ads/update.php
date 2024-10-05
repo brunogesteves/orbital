@@ -19,7 +19,10 @@ $link = $_POST["adLink"];
 $starts_at = strtotime($_POST["adStarts_at"]);
 $finishs_at = strtotime($_POST["adFinishs_at"]);
 
-
+var_dump($_POST["adStarts_at"]);
+var_dump($_POST["adFinishs_at"]);
+var_dump($starts_at);
+var_dump($finishs_at);
 if ((strlen($_FILES["adUpdateFileUpload"]["name"]) != 0)) {
 
 

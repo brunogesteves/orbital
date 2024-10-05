@@ -41,7 +41,7 @@ $createSlug = new Slug();
         return "cURL Error #:" . $err;
     } else {
         $res = json_decode($response);        
-
+        var_dump($res);
         $_SESSION["search_content"] = $res->articles;
 
     }

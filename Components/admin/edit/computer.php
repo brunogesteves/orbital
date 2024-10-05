@@ -1,6 +1,7 @@
 <div class="h-[calc(100vh_-_161px)] w-full flex justify-start">
     <div class="w-2/12">
         <?php
+        var_dump($post["section"]);
         include "views/partials/admin/sidebar.php";
         ?>
     </div>
@@ -12,16 +13,16 @@
                     <input type="text" name="title" value="<?= $post["title"]; ?>" class="bg-slate-300 px-2 outline-none rounded-md border border-black placeholder:text-black placeholder:text-opacity-30" placeholder="nome do post" />                    
                     <input type="datetime-local" name="post_at" min="<?= $minTime ?>" class="post_at" />
                     <select id="section" name="section" class="rounded-md border border-black mb-3">
-                        <option value="n1">n1</option>
-                        <option value="n2">n2</option>
-                        <option value="n3">n3</option>
-                        <option value="n4">n4</option>
+                        <option value="n1" <?php if ($post["section"] == "n1") : ?> selected<?php endif; ?>>n1</option>
+                        <option value="n2" <?php if ($post["section"] == "n2") : ?> selected<?php endif; ?>>n2</option>
+                        <option value="n3" <?php if ($post["section"] == "n3") : ?> selected<?php endif; ?>>n3</option>
+                        <option value="n4" <?php if ($post["section"] == "n4") : ?> selected<?php endif; ?>>n4</option>
                     </select>
                     <div class="previewEditImage"></div>
                     <div class="ui approve button openEditImageModalBtn">Mudar uma Thumb</div>                    
-                    <input type="hidden" class="oldContent" value="<?= $post["content"] ?>" />
+                    <input type="hidden" class="oldContentComputer" value="<?= htmlentities($post["content"]) ?>" />
                     <input type="hidden" class="oldPost_at" value="<?= $post["post_at"] ?>" />
-                    <input type="hidden" class="oldImageThumb" value="<?= $post["image"] ?>" />
+                    <input type="hidden" class="oldImageThumbComputer" value="<?= $post["image"] ?>" />
                     <input class="image_id" type="hidden" name="id" value="<?= $post["id"] ?>"/>
                     <input type="hidden" name="content" class="content" />
                     <input class="image_id" type="hidden" name="image_id" value="<?= $post["image_id"] ?>"/>

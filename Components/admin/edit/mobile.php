@@ -12,12 +12,12 @@
             </select>
             <div class="previewEditImage"></div>
             <div class="ui approve button openEditImageModalBtn">Mudar Thumb</div>            
-            <input type="hidden" class="oldContent" value="<?= $post["content"] ?>" />
-            <input type="hidden" class="oldPost_at" value="<?= $post["post_at"] ?>" />
-            <input type="hidden" class="oldImageThumb" name="image"  value="<?= $post["image"] ?>" />
+            <input type="hidden" class="oldContentMobile" value="<?= $post["content"] ?>" />
+            <input type="hidden" class="oldPost_atMobile" value="<?= $post["post_at"] ?>" />
+            <input type="hidden" class="oldImageThumbMobile" name="image"  value="<?= $post["image"] ?>" />
             <input type="hidden" name="id" value="<?= $post["id"] ?>" />
-            <input type="hidden" class="content" name="content"  />
-            <input type="hidden" class="image_id" name="image_id" value="<?= $post["image_id"] ?>" />
+            <input type="hidden" class="contentMobile" name="content"  />
+            <input type="hidden" class="image_idMobile" name="image_id" value="<?= $post["image_id"] ?>" />
 
         </div>
     </form>
