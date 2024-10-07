@@ -20,21 +20,23 @@
                     <div>
                         <img src="../images/ads/<?= $ad['file'] ?>" class=" w-full object-fit object-center" />
                         <div class="flex justify-between items-center h-auto w-full my-2 px-3 py-2 gap-x-1 ">
-                            <p class="w-auto ">
+                            <p class="w-auto name">
                                 <?= $ad["name"] ?>
                             </p>
-                            <p class="w-auto">
-                                <?= $ad["link"] ?>
-                            </p>
-                            <p class="w-24">
+                            <p class="file hidden"><?= $ad["file"] ?></p>
+                            <p class="position hidden"><?= $ad["position"] ?></p>
+                            <p class="postId hidden"><?= $ad["id"] ?></p>
+                            <p class="w-auto link"><?= $ad["link"] ?></p>
+                            <p class="w-24 starts_at">
                                 <?= date("d/m/Y h:i:s A", $ad["starts_at"]); ?>
                             </p>
-                            <p class="w-24 ">
+                            <p class="w-24 finishs_at">
                                 <?= date("d/m/Y h:i:s A", $ad["finishs_at"]); ?>
                             </p>
                             <p class="w-20">
                                 <?= $ad["status"] == "on" ? "Publicado" : "Fora do Ar" ?>
                             </p>
+
                             <div class="flex gap-x-1">
                                 <form method="POST" action="/admin/ads/publish" class=" flex items-center">
                                     <input type="hidden" name="statusId" value=<?= $ad["id"] ?> />
@@ -68,12 +70,13 @@
                 foreach ($mobileAds as $ad) : ?>
                     <img src="../images/ads/<?= $ad['file'] ?>" class=" w-full object-fit object-center" />
                     <div class="flex justify-between items-center h-auto w-full my-2 px-3 py-2 gap-x-1 ">
-                        <p class="w-auto">
+                        <p class="w-auto name">
                             <?= $ad["name"] ?>
                         </p>
-                        <p class="w-auto">
-                            <?= $ad["link"] ?>
-                        </p>
+                        <p class="file hidden"><?= $ad["file"] ?></p>
+                        <p class="position hidden"><?= $ad["position"] ?></p>
+                        <p class="postId hidden"><?= $ad["id"] ?></p>
+                        <p class="w-auto"><?= $ad["link"] ?></p>
                         <p class="w-24">
                             <?= date("d/m/Y h:i:s A", $ad["starts_at"]); ?>
                         </p>
@@ -116,12 +119,11 @@
                     <img src="../images/ads/<?= $ad['file'] ?>" class=" w-full object-fit object-center" />
                     <input type="hidden" name="recentStatus" value=<?= $ad["status"] == "on" ? "off" : "on" ?> />
                     <div class="flex justify-between items-center h-auto w-full my-2 px-3 py-2 gap-x-1 ">
-                        <p class="w-auto">
-                            <?= $ad["name"] ?>
-                        </p>
-                        <p class="w-auto">
-                            <?= $ad["link"] ?>
-                        </p>
+                        <p class="w-auto name"><?= $ad["name"] ?></p>
+                        <p class="file hidden"><?= $ad["file"] ?></p>
+                        <p class="position hidden"><?= $ad["position"] ?></p>
+                        <p class="postId hidden"><?= $ad["id"] ?></p>
+                        <p class="w-auto"><?= $ad["link"] ?></p>
                         <p class="w-24">
                             <?= date("d/m/Y h:i:s A", $ad["starts_at"]); ?>
                         </p>
@@ -150,10 +152,7 @@
                                 </button>
                             </form>
                         </div>
-                    </div>
-                    <!--  -->
-
-                    <!-- begin first ver modal -->
+                    </div> >
                 <?php endforeach; ?>
             </div>
         </div>
@@ -211,73 +210,40 @@
         <form method="POST" action="/admin/ads/update" enctype="multipart/form-data" class="flex flex-col items-center gap-y-5 updateAd">
             <div class="flex justify-center gap-x-2">
                 <span class="text-xl">nome: </span>
-                <input type="text" disabled class=" w-96 border-2 border-black rounded-lg" value="<?= $ad["name"] ?>" />
+                <input id="modalUpdateAdAreaName" type="text" name="adName" disabled class="w-96 border-2 border-black rounded-lg" />
             </div>
-            <span class=" text-red-500 font-bold -mt-3">
-                <?php if (isset($errorsUpdate["adName"])) : ?>
-                    <?= $errorsUpdate["adName"] ?>
-                <?php endif; ?>
-            </span>
             <div class="flex justify-center gap-x-2">
                 <span class="text-xl">Imagem:</span>
                 <input type="file" name="adUpdateFileUpload" class="adUpdateFileUpload" accept=".jpg, .jpeg, .png" />
             </div>
-            <div class="previewUploadInputAdImage">
-                <img src="../images/ads/<?= $ad["file"] ?>" class=" thumb-image w-full " />`
-            </div>
+            <div id="previewUploadInputAdImage"></div>
             <div class=" flex justify-center gap-x-2">
                 <span class="text-xl">Posição:</span>
-                <select name="adPosition" class="text-xl">
+                <select id="modalUpdateAdAreaPosition" name="adPosition" class="text-xl">
                     <option value="none">Selecione uma posição</option>
-                    <option value="mobile" <?= $ad["position"] == "mobile" ? "selected" : "" ?>>
-                        Mobile</option>
-                    <option value="front" <?= $ad["position"] == "front" ? "selected" : "" ?>>
-                        Frente</option>
-                    <option value="slide" <?= $ad["position"] == "slide" ? "selected" : "" ?>>
-                        Slide</option>
+                    <option value="mobile">Mobile</option>
+                    <option value="front">Frente</option>
+                    <option value="slide">Slide</option>
                 </select>
             </div>
-            <span class="text-red-500 font-bold -mt-3">
-                <?php if (isset($errorsUpdate["adPosition"])) : ?>
-                    <?= $errorsUpdate["adPosition"] ?>
-                <?php endif; ?>
-            </span>
             <div class="flex justify-center gap-x-2">
                 <span class="text-xl">Link:</span>
                 <input type="text" name="adLink" value="<?= $ad["link"] ?>" class="border-2 border-black rounded-lg px-2 w-96" />
             </div>
-            <span class="text-red-500 font-bold -mt-3">
-                <?php if (isset($errorsUpdate["adLink"])) : ?>
-                    <?= $errorsUpdate["adLink"] ?>
-                <?php endif; ?>
-            </span>
             <div class="flex justify-center gap-x-2">
                 <span class="text-xl">Início: </span>
-                <input type="datetime-local" min="<?= $minTime ?>" name="adStarts_at" value="<?= (new DateTime(date("Y-m-d h:i ", $ad["starts_at"])))->format('Y-m-d\TH:i')
-                                                                                                ?>" class="border-2 border-black rounded-lg px-2" />
+                <input type="datetime-local" min="<?= $minTime ?>" id="modalUpdateAdAreaStartsAt" name="modalUpdateAdAreaStartsAt" class="border-2 border-black rounded-lg px-2" />
             </div>
-            <span class="text-red-500 font-bold -mt-3">
-                <?php if (isset($errorsUpdate["adStarts_at"])) : ?>
-                    <?= $errorsUpdate["adStarts_at"] ?>
-                <?php endif; ?>
-            </span>
             <div class="flex justify-center gap-x-2">
                 <span class="text-xl">Fim:</span>
-                <input type="datetime-local" min="<?= $minTime ?>" name="adFinishs_at" value="<?= (new DateTime(date("Y-m-d h:i ", $ad["finishs_at"])))->format('Y-m-d\TH:i')
-                                                                                                    ?? $_POST["adStarts_at"] ?>" class="border-2 border-black rounded-lg px-2" />
+                <input type="datetime-local" min="<?= $minTime ?>" id="modalUpdateAdAreaFinishsAt" name="adFinishs_at" value="<?= (new DateTime(date("Y-m-d h:i ", $ad["finishs_at"])))->format('Y-m-d\TH:i')                                                                                                    ?? $_POST["adStarts_at"] ?>" class="border-2 border-black rounded-lg px-2" />
             </div>
-            <span class="text-red-500 font-bold -mt-3">
-                <?php if (isset($errorsUpdate["adFinishs_at"])) : ?>
-                    <?= $errorsUpdate["adFinishs_at"] ?>
-                <?php endif; ?>
-            </span>
-            <input type="hidden" name="updateAdId" value="<?= $ad["id"] ?>" />
-            <input type="hidden" name="adName" value="<?= $ad["name"] ?>" />
+            <input type="hidden" id="modalUpdateAdAreaId" name="updateAdId" />
             <div class="flex gap-x-3 mt-4">
                 <button class="closeUpdateAdModalbtn text-white bg-red-500 close p-2 rounded-md text-sm font-bold">
                     Fechar</button>
                 <button type="submit" name="_method" value="put" class="text-white bg-black p-2 rounded-md text-sm font-bold">Atualizar
-                    Anúncio 3</button>
+                    Anúncio </button>
             </div>
         </form>
     </div>
