@@ -1,7 +1,7 @@
 <?php
 include(__DIR__ . "/../../views/partials/admin/headerAdmin.php");
 ?>
-<main >
+<main>
     <div class="ui padded centered  grid">
         <div class="two column mobile only row ">
             <?php
@@ -30,3 +30,9 @@ include(__DIR__ . "/../../views/partials/admin/headerAdmin.php");
 include(__DIR__ . "/../../views/partials/admin/footer.php");
 
 ?>
+
+
+<script src="../scripts/editpost.js" defer></script>
+<script src="../scripts/suneditor.min.js"></script>
+<script src="../scripts/pt.js" defer></script>
+<link href="../styles/suneditor.min.css" rel="stylesheet" />

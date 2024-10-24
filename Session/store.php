@@ -15,7 +15,7 @@ $user = $db->findUser("SELECT *,aes_decrypt(password, '$_ENV[SECRET_KEY]') as pa
 $formErrors = [];
 
 if (strlen($email) == 0) {
-    $formErrors["email"] = "Digite um Título";
+    $formErrors["email"] = "Digite um Email";
 }
 if (strlen($password) == 0) {
     $formErrors["password"] = "Digite a senha";

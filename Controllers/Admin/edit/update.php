@@ -14,15 +14,15 @@ $slug = trim($createSlug->create($_POST["title"]));
 $post_at =  strtotime($_POST["post_at"]);
 $image_id = (int) $_POST["image_id"];
 
-$result = $db->update("UPDATE posts SET 
+echo ($image_id);
+$db->update("UPDATE posts SET 
         title='$title',
-        link='',
         content='$content',
-        section='$section',
-        source='Orbital Channel',
+        section='$section',        
         slug='$slug',
         post_at=$post_at,
-        image_id=$image_id 
+        image_id=$image_id
         WHERE id=$id");
+
 
 header('Location: ' . "/admin/editar?id=$id");

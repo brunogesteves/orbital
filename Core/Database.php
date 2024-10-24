@@ -27,7 +27,7 @@ class Database
 
         $config = [
             "host" => $_ENV["HOST"],
-            "port" => 3306,
+            "port" => $_ENV["PORT"],
             "dbname" => $_ENV["DATABASE"],
             "charset" => "utf8mb4"
         ];

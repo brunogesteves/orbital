@@ -8,15 +8,15 @@ class SchedulePosts
     public function __construct()
     {
         $config = [
-            "host" => "localhost",
+            "host" => $_ENV["HOST"],
             "port" => 3306,
-            "dbname" => "u148524531_orbital",
+            "dbname" => $_ENV["DATABASE"],
             "charset" => "utf8mb4"
         ];
 
         $dsn = 'mysql:' . http_build_query($config, "", ";");
 
-        $this->connection = new PDO($dsn, "u148524531_orbital", "lya92WJOl7HLwW", [
+        $this->connection = new PDO($dsn, $_ENV["USER"], $_ENV["PASSWORD"], [
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
         ]);
     }
@@ -43,31 +43,32 @@ class SchedulePosts
         return $this->statment->fetch();
     }
 
-public function socialMidia($title, $slug){
-    $data = [
-        'message' => $title,
-        "link" => "https://orbitaltv.net/" . $slug,
-        "published" => "true",
-        "access_token" => "EAAGa2EgxZCrMBO7yUr249GTCgOgt2WNbQmto2ZCurNW7tVYaBIjpwewhicXGjGjWlyQ7nqlxQn9wlgX4fyK3pfOIv4yFncoSABu3Clbijsrg3Tj3l8asehxusymtHhurZBT19ZBKDtB7gNiyZCWfArJ7FDxl3XGl3FtR2HRm9ZBjjVCVHcrZCtlsfSAApKd"
-    ];
+    public function socialMidia($title, $slug)
+    {
+        $data = [
+            'message' => $title,
+            "link" => "https://orbitaltv.net/" . $slug,
+            "published" => "true",
+            "access_token" => "EAAGa2EgxZCrMBO7yUr249GTCgOgt2WNbQmto2ZCurNW7tVYaBIjpwewhicXGjGjWlyQ7nqlxQn9wlgX4fyK3pfOIv4yFncoSABu3Clbijsrg3Tj3l8asehxusymtHhurZBT19ZBKDtB7gNiyZCWfArJ7FDxl3XGl3FtR2HRm9ZBjjVCVHcrZCtlsfSAApKd"
+        ];
 
-    $ch = curl_init();
+        $ch = curl_init();
 
-    $options = [
-        CURLOPT_URL => "https://graph.facebook.com/v18.0/104512705794942_342045265371090/feed",
-        CURLOPT_POST => 1,
-        CURLOPT_POSTFIELDS => $data,
-        CURLOPT_RETURNTRANSFER => 1,
-    ];
+        $options = [
+            CURLOPT_URL => "https://graph.facebook.com/v18.0/104512705794942_342045265371090/feed",
+            CURLOPT_POST => 1,
+            CURLOPT_POSTFIELDS => $data,
+            CURLOPT_RETURNTRANSFER => 1,
+        ];
 
-    curl_setopt_array($ch, $options);
+        curl_setopt_array($ch, $options);
 
-    
 
-    curl_close($ch);
 
-    return curl_exec($ch);
-}
+        curl_close($ch);
+
+        return curl_exec($ch);
+    }
 
 
     public function index()
@@ -88,7 +89,7 @@ public function socialMidia($title, $slug){
             );
 
             $postfaceId =  self::socialMidia($result["title"], $result["slug"]);
-            
+
             $postId = $result["id"];
 
             if ($postfaceId) {
@@ -110,7 +111,7 @@ public function socialMidia($title, $slug){
             );
 
             $postfaceId =  self::socialMidia($result["title"], $result["slug"]);
-            
+
             $postId = $result["id"];
 
             if ($postfaceId) {

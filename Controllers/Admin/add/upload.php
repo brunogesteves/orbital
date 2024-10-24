@@ -1,11 +1,7 @@
 <?php
 
-$dbhost = "89.117.7.103";
-$dbuser = "u148524531_orbital";
-$dbpass = "lya92WJOl7HLwW";
-$dbname = "u148524531_orbital";
+$con = mysqli_connect($_ENV["HOST"], $_ENV["USER"], $_ENV["PASSWORD"], $_ENV["DATABASE"]);
 
-$con = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
 if ($con->connect_error) {
     exit('Could not connect');

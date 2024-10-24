@@ -23,13 +23,14 @@
                     <?php endif; ?>
 
                     <div class="previewEditImage"></div>
+
                     <div class="ui approve button openEditImageModalBtn">Mudar uma Thumb</div>
                     <input type="hidden" class="oldContentComputer" value="<?= htmlentities($post["content"]) ?>" />
                     <input type="hidden" class="oldPost_at" value="<?= $post["post_at"] ?>" />
                     <input type="hidden" class="oldImageThumbComputer" value="<?= $post["image"] ?>" />
-                    <input class="image_id" type="hidden" name="id" value="<?= $post["id"] ?>" />
+                    <input type="hidden" name="id" value="<?= $post["id"] ?>" />
                     <input type="hidden" name="content" class="content" />
-                    <input class="image_id" type="hidden" name="image_id" value="<?= $post["image_id"] ?>" />
+                    <input type="hidden" class="image_id" name="image_id" value="<?= $post["image_id"] ?>" />
                 </div>
             </form>
 
@@ -67,8 +68,3 @@
     <div class="text-xl ml-3 mt-3 cursor-pointer closeImage">X</div>
     <div class="modalImage" class="flex justify-center mb-5"></div>
 </div>
-
-<script src="../scripts/editpost.js" defer></script>
-<script src="../scripts/suneditor.min.js"></script>
-<script src="../scripts/pt.js" defer></script>
-<link href="../styles/suneditor.min.css" rel="stylesheet" />
