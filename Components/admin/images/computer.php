@@ -13,29 +13,31 @@
                 </form>
                 <div class="previewInputImage"> </div>
             </div>
-            <div class="flex justify-start items-start gap-x-7 flex-wrap overflow-y-auto"">
-            <?php
-            foreach ($images as $image) : ?>
-                <div class=" cursor-pointer w-1/6 mr-3 relative">
-                <div class="ui dimmable image">
-                    <div class="ui dimmer">
-                        <div class="content">
-                            <form method="post" action="imagens/destroy">
-                                <input type="hidden" name="imageId" value=<?= $image["id"] ?> />
-                                <input type="hidden" name="imageName" value=<?= $image["name"] ?> />
-                                <div class="ui button seePicture" id=<?= $image["name"] ?>>Ver</div>
-                                <button type="submit" name="_method" value="DELETE" class="ui primary button ">Apagar</button>
-                            </form>
+            <div class="flex justify-start items-start h-[calc(100vh_-_273px)]  flex-wrap overflow-y-auto">
+                <?php
+                foreach ($images as $image) : ?>
+                    <div class=" cursor-pointer w-1/4 p-1 h-60 relative">
+                        <div class="ui dimmable image w-full h-full">
+                            <div class="ui dimmer">
+                                <div class="content">
+                                    <form method="post" action="imagens/destroy" class="w-full h-full">
+                                        <input type="hidden" name="imageId" value=<?= $image["id"] ?> />
+                                        <input type="hidden" name="imageName" value=<?= $image["name"] ?> />
+                                        <div class="ui button seePicture" id=<?= $image["name"] ?>>Ver</div>
+                                        <button type="submit" name="_method" value="DELETE" class="ui primary button ">Apagar</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="w-full h-full">
+                                <img src=<?= "../images/" . $image["name"] ?> alt=<?= $image["name"] ?> class="w-full object-scale-down max-h-full m-auto" />
+                            </div>
                         </div>
                     </div>
-                    <img src=<?= "../images/" . $image["name"] ?> alt=<?= $image["name"] ?> class="w-full object-cover min-h-40" />
-                </div>
+                <?php endforeach; ?>
             </div>
-        <?php endforeach; ?>
-        </div>
-        <div class="ui modal modalImage">
-            <div id="modalImage"></div>
-        </div>
+            <div class="ui modal modalImage">
+                <div id="modalImage"></div>
+            </div>
 
     </main>
 </div>

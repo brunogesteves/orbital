@@ -11,7 +11,5 @@ class Images
     {
         $db = new Database();
         return $db->findAll("select * from images");
-
-
     }
 }

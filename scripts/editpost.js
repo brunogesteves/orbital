@@ -79,7 +79,6 @@ $(document).ready(() => {
     };
     editor.setContents($(".oldContentComputer").val());
   }
-  console.log("hrml: ", $(".oldContentComputer").val());
 
   $(".openEditImageModalBtn").on("click", () => {
     $(".editImageModal").modal("show");

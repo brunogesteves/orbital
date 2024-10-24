@@ -16,33 +16,34 @@ $formErrors = [];
 
 if (strlen($email) == 0) {
     $formErrors["email"] = "Digite um Título";
-    
 }
 if (strlen($password) == 0) {
     $formErrors["password"] = "Digite a senha";
 }
 
-$_SESSION["formErrors"]=$formErrors;
+$_SESSION["formErrors"] = $formErrors;
 
 if ($user) {
     if ($user["pass"] == $password) {
 
         login([
-            "email" => $email
+            "email" => $email,
+            "name" => $user["name"],
+            "userID" => $user["id"],
+            "role" => $user["role"]
         ]);
         header("location: /admin");
-    }else{
-        $_SESSION["warningAcess"]="Email e/ou Senha Erradas";
-         header("location: /login");
+    } else {
+        $_SESSION["warningAcess"] = "Email e/ou Senha Erradas";
+        header("location: /login");
     }
 }
 
 if (!$user) {
-   if($formErrors){
+    if ($formErrors) {
         header("location: /login");
-   }else{
-        $_SESSION["warningAcess"]="Email e/ou Senha Erradas";
-         header("location: /login");
+    } else {
+        $_SESSION["warningAcess"] = "Email e/ou Senha Erradas";
+        header("location: /login");
     }
-
 }

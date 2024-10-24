@@ -8,17 +8,26 @@
         <div class="flex flex-col h-auto overflow-y-auto w-full relative">
             <div class="ui top attached tabular menu">
                 <a class="item active" data-tab="orbital">Orbital</a>
-                <a class="item" data-tab="external">Externos</a>
                 <a class="item" data-tab="level1">Nível 1</a>
                 <a class="item" data-tab="level2">Nível 2</a>
                 <a class="item" data-tab="level3">Nível 3</a>
                 <a class="item" data-tab="level4">Nível 4</a>
-                <a class="item" data-tab="automatics">Automáticos</a>
+
             </div>
             <div class="ui bottom attached tab segment active h-[calc(100vh_-_200px)] overflow-y-auto " data-tab="orbital">
+                <div class="w-full flex justify-start">
+                    Filtar por:
+                    <select id="authorSelect" class="ml-4">
+                        <option>Escolha um usuário</option>
+                        <?php
+                        foreach ($users as $user): ?>
+                            <option><?= ucwords($user["name"]) ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
                 <?php
                 foreach ($posts as $post) : ?>
-                    <div class="flex justify-between items-center h-auto w-full my-2 px-3 py-2 gap-x-1">
+                    <div class="postsArea flex justify-between items-center h-auto w-full my-2 px-3 py-2 gap-x-1">
                         <img src="/images/<?= $post['image'] ?>" class=" w-20 object-contain" />
                         <p class="w-96 title">
                             <?= $post["title"] ?>
@@ -26,11 +35,14 @@
                         <p class="w-auto source">
                             <?= $post["source"] ?>
                         </p>
+                        <p class="w-auto nameAuthor">
+                            <?= ucwords($post["authorName"]) ?>
+                        </p>
                         <p class="w-5 section">
                             <?= $post["section"] ?>
                         </p>
                         <p class="w-24 startsAt">
-                            <?= date("d-m-Y h:i ", $post["post_at"]) ?>
+                            <?= date("d-m-Y h:i A", $post["post_at"]) ?>
                         </p>
                         <p class="w-20 status">
                             <?= $post["status"] == "on" ? "Publicado" : "Fora do Ar" ?>
@@ -38,9 +50,7 @@
 
                         <input type="hidden" class="w-20 postId" value="<?= $post["id"] ?>" />
                         <input type="hidden" class="w-20 image" value="<?= $post["image"] ?>" />
-                        <input type="hidden" class="w-20 postContent" value="<?= $post["content"] ?>" />
-
-
+                        <input type="hidden" class="w-20 postContent" value="<?= htmlentities($post["content"]) ?>" />
                         <div class="flex gap-x-1">
                             <button class="openModalBtn bg-black hover:bg-red-700 px-3 py-1 rounded text-white m-3">
                                 Verificar
@@ -55,45 +65,7 @@
                     </div>
                 <?php endforeach; ?>
             </div>
-            <div class="ui bottom attached tab segment h-[calc(100vh_-_200px)]  overflow-y-auto" data-tab="external">
-                <?php
-                foreach ($extposts as $post) : ?>
-                    <div class="flex justify-between items-center h-auto w-full my-2 px-3 py-2 gap-x-1">
-                        <img src=<?= $post["image"] ?> class="w-20 object-contain" />
-                        <p class="w-96 title">
-                            <?= $post["title"] ?>
-                        </p>
-                        <p class="w-auto source">
-                            <?= $post["source"] ?>
-                        </p>
-                        <p class="w-5 section">
-                            <?= $post["section"] ?>
-                        </p>
-                        <p class="w-24 startsAt">
-                            <?= date("d-m-Y h:i ", $post["post_at"]) ?>
-                        </p>
-                        <p class="w-20 status">
-                            <?= $post["status"] == "on" ? "Publicado" : "Fora do Ar" ?>
-                        </p>
-                        <input type="hidden" class="w-20 postId" value="<?= $post["id"] ?>" />
-                        <input type="hidden" class="w-20 image" value="<?= $post["image"] ?>" />
-                        <input type="hidden" class="w-20 postContent" value="<?= $post["content"] ?>" />
-                        <div class="flex gap-x-1">
-                            <button class="openModalBtn bg-black hover:bg-red-700 px-3 py-1 rounded text-white m-3">
-                                Verificar
-                            </button>
-                            <form method="POST" action="admin/destroy" class="flex items-center">
-                                <input type="hidden" name="DeleteExtPostId" value=<?= $post["id"] ?> />
-                                <button type="submit" name="_method" value="DELETE" class=" rounded-md">
-                                    <img src="/images/icons/trash.png" alt="trash" class="w-7" />
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-
-                <?php endforeach; ?>
-            </div>
-             <div class="ui bottom attached tab segment h-[calc(100vh_-_200px)] overflow-y-auto" data-tab="level1">
+            <div class="ui bottom attached tab segment h-[calc(100vh_-_200px)] overflow-y-auto" data-tab="level1">
                 No momento : <span class="<?= sizeof($posts1) > 4 ? 'text-red-500' : 'text-black-500' ?>"> <?= sizeof($posts1) ?></span>/4
                 <?php
                 foreach ($posts1 as $post) : ?>
@@ -116,7 +88,7 @@
                         </p>
                         <input type="hidden" class="w-20 postId" value="<?= $post["id"] ?>" />
                         <input type="hidden" class="w-20 image" value="<?= $post["image"] ?>" />
-                        <input type="hidden" class="w-20 postContent" value="<?= $post["content"] ?>" />
+                        <input type="hidden" class="w-20 postContent" value="<?= htmlentities($post["content"]) ?>" />
                         <div class="flex gap-x-1">
                             <button class="openModalBtn bg-black hover:bg-red-700 px-3 py-1 rounded text-white m-3">
                                 Verificar
@@ -126,7 +98,7 @@
 
                 <?php endforeach; ?>
             </div>
-             <div class="ui bottom attached tab segment h-[calc(100vh_-_200px)] overflow-y-auto" data-tab="level2">
+            <div class="ui bottom attached tab segment h-[calc(100vh_-_200px)] overflow-y-auto" data-tab="level2">
                 No momento : <span class="<?= sizeof($posts2) > 4 ? 'text-red-500' : 'text-black-500' ?>"> <?= sizeof($posts2) ?></span>/4
                 <?php
                 foreach ($posts2 as $post) : ?>
@@ -149,7 +121,7 @@
                         </p>
                         <input type="hidden" class="w-20 postId" value="<?= $post["id"] ?>" />
                         <input type="hidden" class="w-20 image" value="<?= $post["image"] ?>" />
-                        <input type="hidden" class="w-20 postContent" value="<?= $post["content"] ?>" />
+                        <input type="hidden" class="w-20 postContent" value="<?= htmlentities($post["content"]) ?>" />
                         <div class="flex gap-x-1">
                             <button class="openModalBtn bg-black hover:bg-red-700 px-3 py-1 rounded text-white m-3">
                                 Verificar
@@ -159,7 +131,7 @@
 
                 <?php endforeach; ?>
             </div>
-                       <div class="ui bottom attached tab segment h-[calc(100vh_-_200px)] overflow-y-auto" data-tab="level3">
+            <div class="ui bottom attached tab segment h-[calc(100vh_-_200px)] overflow-y-auto" data-tab="level3">
                 No momento : <span class="<?= sizeof($posts3) > 7 ? 'text-red-500' : 'text-black-500' ?>"> <?= sizeof($posts3) ?></span>/7
                 <?php
                 foreach ($posts3 as $post) : ?>
@@ -182,7 +154,8 @@
                         </p>
                         <input type="hidden" class="w-20 postId" value="<?= $post["id"] ?>" />
                         <input type="hidden" class="w-20 image" value="<?= $post["image"] ?>" />
-                        <input type="hidden" class="w-20 postContent" value="<?= $post["content"] ?>" />
+                        <input type="hidden" class="w-20 postContent" value="<?= htmlentities($post["content"]) ?>" />
+
                         <div class="flex gap-x-1">
                             <button class="openModalBtn bg-black hover:bg-red-700 px-3 py-1 rounded text-white m-3">
                                 Verificar
@@ -215,7 +188,8 @@
                         </p>
                         <input type="hidden" class="w-20 postId" value="<?= $post["id"] ?>" />
                         <input type="hidden" class="w-20 image" value="<?= $post["image"] ?>" />
-                        <input type="hidden" class="w-20 postContent" value="<?= $post["content"] ?>" />
+                        <input type="hidden" class="w-20 postContent" value="<?= htmlentities($post["content"]) ?>" />
+
                         <div class="flex gap-x-1">
                             <button class="openModalBtn bg-black hover:bg-red-700 px-3 py-1 rounded text-white m-3">
                                 Verificar
@@ -225,41 +199,6 @@
 
                 <?php endforeach; ?>
             </div>
-            <div class="ui bottom attached tab segment h-[calc(100vh_-_200px)] overflow-y-auto" data-tab="automatics">
-
-                <?php
-                foreach ($autoposts as $post) : ?>
-                    <div class="flex justify-between items-center h-auto w-full my-2 px-3 py-2 gap-x-1">
-                        <img src=<?= $post["source"] == "Orbital Channel" ? "/images/$post[image]" : $post["image"] ?> class=" size-20 object-cover" />
-                        <p class="w-96 title">
-                            <?= $post["title"] ?>
-                        </p>
-                        <p class="w-auto source">
-                            <?= $post["source"] ?>
-                        </p>
-                        <p class="w-5 section">
-                            <?= $post["section"] ?>
-                        </p>
-                        <p class="w-24">
-                            <?= date("d-m-Y h:i ", $post["post_at"]) ?>
-                        </p>
-                        <p class="w-20 status">
-                            <?= $post["status"] == "on" ? "Publicado" : "Fora do Ar" ?>
-                        </p>
-                        <input type="hidden" class="w-20 image" value="<?= $post["image"] ?>" />
-                        <input type="hidden" class="w-20 postContent" value="<?= $post["content"] ?>" />
-                        <div class="flex gap-x-1">
-                            <button class="openModalBtn bg-black hover:bg-red-700 px-3 py-1 rounded text-white m-3">
-                                Verificar
-                            </button>
-                        </div>
-                    </div>
-
-                <?php endforeach; ?>
-            </div>
-
-
-
         </div>
     </section>
 
@@ -283,6 +222,10 @@
                     <span>Fonte:</span>
                     <span id="modalAreaSource"></span>
                 </div>
+                <div>
+                    <span>Criado por:</span>
+                    <span id="modalAuthorName"></span>
+                </div>
 
                 <div id="content">
                     <span>Conteúdo:</span>
@@ -295,7 +238,7 @@
                 <button type="button" id="closeModalBtn" class="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-white mr-1 max-[425px]:mb-3">
                     Fechar
                 </button>
-                <div id="editPostPublish"  class="flex max-[425px]:flex-col justify-center items-center gap-x-3 max-[425px]:gap-y-3"></div>
+                <div id="editPostPublish" class="flex max-[425px]:flex-col justify-center items-center gap-x-3 max-[425px]:gap-y-3"></div>
             </div>
         </div>
     </div>

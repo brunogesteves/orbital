@@ -1,9 +1,8 @@
 <?php
 include(__DIR__ . "/../../views/partials/admin/header.php");
 ?>
-<main >
+<main>
     <div class="ui padded centered grid">
-    
         <div class="two column mobile only row ">
             <?php
             include(__DIR__ . "/../../Components/admin/index/mobile.php");
@@ -13,15 +12,15 @@ include(__DIR__ . "/../../views/partials/admin/header.php");
             <?php
             include(__DIR__ . "/../../Components/admin/index/mobile.php");
             ?>
+
         </div>
+
         <div class="computer only row -m-4">
             <?php
             include(__DIR__ . "/../../Components/admin/index/computer.php");
             ?>
 
         </div>
-
-        
     </div>
 </main>
 

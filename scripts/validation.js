@@ -2,13 +2,17 @@ $(document).ready(() => {
   $(".addpost").validate({
     ignore: "",
     rules: {
-      title: "required",
+      title: {
+        required: true,
+        maxlength: 60,
+      },
       post_at: "required",
       image_id: "required",
       content: "required",
     },
     messages: {
-      title: "<p class='text-red-500'>Escolha um título</p>",
+      title:
+        "<p class='text-red-500'>Escolha um título de até 60 caracteres</p>",
       post_at: "<p class='text-red-500'>Escolha uma data</p>",
       image_id: "<p class='text-red-500'>Escolha uma thumb</p>",
       content: "<p class='text-red-500'>Conteúdo Obrigatório</p>",
@@ -21,14 +25,18 @@ $(document).ready(() => {
   $(".editpost").validate({
     ignore: "",
     rules: {
-      title: "required",
+      title: {
+        required: true,
+        maxlength: 60,
+      },
       post_at: "required",
       image_id: "required",
       content: "required",
     },
 
     messages: {
-      title: "<p class='text-red-500'>Escolha um título</p>",
+      title:
+        "<p class='text-red-500'>Escolha um título de até 60 caracteres</p>",
       adFile: "<p class='text-red-500'>Escolha uma data</p>",
 
       image_id: "<p class='text-red-500'>Escolha uma thumb</p>",

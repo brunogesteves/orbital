@@ -77,10 +77,10 @@
                         <p class="position hidden"><?= $ad["position"] ?></p>
                         <p class="postId hidden"><?= $ad["id"] ?></p>
                         <p class="w-auto"><?= $ad["link"] ?></p>
-                        <p class="w-24">
+                        <p class="w-24 starts_at">
                             <?= date("d/m/Y h:i:s A", $ad["starts_at"]); ?>
                         </p>
-                        <p class="w-24">
+                        <p class="w-24 finishs_at">
                             <?= date("d/m/Y h:i:s A", $ad["finishs_at"]); ?>
                         </p>
                         <p class="w-20 ">
@@ -124,10 +124,10 @@
                         <p class="position hidden"><?= $ad["position"] ?></p>
                         <p class="postId hidden"><?= $ad["id"] ?></p>
                         <p class="w-auto"><?= $ad["link"] ?></p>
-                        <p class="w-24">
+                        <p class="w-24 starts_at">
                             <?= date("d/m/Y h:i:s A", $ad["starts_at"]); ?>
                         </p>
-                        <p class="w-24">
+                        <p class="w-24 finishs_at">
                             <?= date("d/m/Y h:i:s A", $ad["finishs_at"]); ?>
                         </p>
                         <p class="w-20 ">
@@ -210,7 +210,8 @@
         <form method="POST" action="/admin/ads/update" enctype="multipart/form-data" class="flex flex-col items-center gap-y-5 updateAd">
             <div class="flex justify-center gap-x-2">
                 <span class="text-xl">nome: </span>
-                <input id="modalUpdateAdAreaName" type="text" name="adName" disabled class="w-96 border-2 border-black rounded-lg" />
+                <input id="modalUpdateAdAreaName" type="text" disabled class="w-96 border-2 border-black rounded-lg" />
+                <input id="modalUpdateAdAreaHiddenName" type="hidden" name="adName" class="w-96 border-2 border-black rounded-lg" />
             </div>
             <div class="flex justify-center gap-x-2">
                 <span class="text-xl">Imagem:</span>
@@ -232,15 +233,15 @@
             </div>
             <div class="flex justify-center gap-x-2">
                 <span class="text-xl">Início: </span>
-                <input type="datetime-local" min="<?= $minTime ?>" id="modalUpdateAdAreaStartsAt" name="modalUpdateAdAreaStartsAt" class="border-2 border-black rounded-lg px-2" />
+                <input type="datetime-local" min="<?= $minTime ?>" id="modalUpdateAdAreaStartsAt" name="adStarts_at" class="border-2 border-black rounded-lg px-2" />
             </div>
             <div class="flex justify-center gap-x-2">
                 <span class="text-xl">Fim:</span>
-                <input type="datetime-local" min="<?= $minTime ?>" id="modalUpdateAdAreaFinishsAt" name="adFinishs_at" value="<?= (new DateTime(date("Y-m-d h:i ", $ad["finishs_at"])))->format('Y-m-d\TH:i')                                                                                                    ?? $_POST["adStarts_at"] ?>" class="border-2 border-black rounded-lg px-2" />
+                <input type="datetime-local" min="<?= $minTime ?>" id="modalUpdateAdAreaFinishsAt" name="adFinishs_at" class="border-2 border-black rounded-lg px-2" />
             </div>
             <input type="hidden" id="modalUpdateAdAreaId" name="updateAdId" />
             <div class="flex gap-x-3 mt-4">
-                <button class="closeUpdateAdModalbtn text-white bg-red-500 close p-2 rounded-md text-sm font-bold">
+                <button type="button" class="closeUpdateAdModalbtn text-white bg-red-500 close p-2 rounded-md text-sm font-bold">
                     Fechar</button>
                 <button type="submit" name="_method" value="put" class="text-white bg-black p-2 rounded-md text-sm font-bold">Atualizar
                     Anúncio </button>

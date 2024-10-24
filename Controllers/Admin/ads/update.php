@@ -13,16 +13,23 @@ $minTime = $dtMinTime->format('Y-m-d\TH:i');
 $id = (int) $_POST["updateAdId"];
 $name = $_POST["adName"];
 $position = $_POST["adPosition"];
-$status = "off";
 $file = $_POST["adName"];
 $link = $_POST["adLink"];
 $starts_at = strtotime($_POST["adStarts_at"]);
 $finishs_at = strtotime($_POST["adFinishs_at"]);
 
-var_dump($_POST["adStarts_at"]);
-var_dump($_POST["adFinishs_at"]);
+
+echo "<pre>";
+var_dump($id);
+var_dump($name);
+var_dump($position);
+var_dump($file);
+var_dump($link);
 var_dump($starts_at);
 var_dump($finishs_at);
+var_dump($_FILES["adUpdateFileUpload"]["name"]);
+
+echo "</pre>";
 if ((strlen($_FILES["adUpdateFileUpload"]["name"]) != 0)) {
 
 
@@ -39,8 +46,7 @@ if ((strlen($_FILES["adUpdateFileUpload"]["name"]) != 0)) {
     $result = $db->update("UPDATE ads SET
             name = '$name',
             position = '$position',
-            status = '$status',
-        file = '$file',
+            file = '$file',
             link = '$link',
             starts_at = $starts_at,
             finishs_at = $finishs_at
@@ -55,13 +61,12 @@ if ((strlen($_FILES["adUpdateFileUpload"]["name"]) != 0)) {
     $result = $db->update("UPDATE ads SET
     name = '$name',
     position = '$position',
-    status = '$status',
     link = '$link',
     starts_at = $starts_at,
     finishs_at = $finishs_at
     WHERE id=$id");
 
-    if ($result) {        
+    if ($result) {
         header('Location: ' . "/admin/ads");
     }
 }

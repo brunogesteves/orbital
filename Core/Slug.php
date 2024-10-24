@@ -1,4 +1,5 @@
 <?php
+
 namespace Core;
 
 class Slug
@@ -92,6 +93,9 @@ class Slug
                         '°' => '',
                         '"' => '',
                         '‘' => '',
+                        '%‘' => '',
+                        '|‘' => '',
+
 
                 );
 
@@ -100,9 +104,5 @@ class Slug
 
                 // -- Returns the slug
                 return strtolower(strtr($string, $table));
-
-
         }
-
-
 }

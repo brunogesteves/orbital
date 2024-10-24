@@ -7,6 +7,7 @@ $(document).ready(() => {
       .val();
     const title = $(".title").eq(index).text().trim();
     const source = $(".source").eq(index).text().trim();
+    const author = $(".nameAuthor").eq(index).text().trim();
     const section = $(".section").eq(index).text().trim();
     const post_at = $(".startsAt").eq(index).text().trim();
     const status = $(".status").eq(index).text().trim();
@@ -14,9 +15,12 @@ $(document).ready(() => {
     const postId = $(".postId").eq(index).val();
     $("#modalAreaTitle").text(title);
     $("#modalAreaSource").text(source);
+    $("#modalAuthorName").text(author);
     $("#modalAreaSection").text(section);
     $("#modalAreaStatus").text(status);
     $("#modalAreaContent").html(content);
+
+    console.log(index);
 
     const newHour =
       post_at[6] +
@@ -112,6 +116,46 @@ $(document).ready(() => {
 
   $("#closeModalBtn").on("click", function () {
     $(".fullscreen.modalArea").modal("toggle");
+  });
+
+  $("#authorSelect").change(() => {
+    const user = $("#authorSelect").val().trim().toLowerCase();
+
+    var postsArea = $(".postsArea");
+    for (let index = 0; index < postsArea.length; index++) {
+      var authorName = $(`.postsArea`)
+        .eq(index)
+        .children("p")
+        .eq(2)
+        .text()
+        .trim()
+        .toLowerCase();
+      if (authorName != user) {
+        $(".postsArea").eq(index).addClass("hidden");
+      } else {
+        $(".postsArea").eq(index).removeClass("hidden");
+      }
+    }
+  });
+
+  $("#authorSelectMobile").change(() => {
+    const user = $("#authorSelectMobile").val().trim().toLowerCase();
+
+    var mobilePostsArea = $(".mobilePostsArea");
+    for (let index = 0; index < mobilePostsArea.length; index++) {
+      var authorName = $(`.mobilePostsArea`)
+        .eq(index)
+        .children("p")
+        .eq(2)
+        .text()
+        .trim()
+        .toLowerCase();
+      if (authorName != user) {
+        $(".mobilePostsArea").eq(index).addClass("hidden");
+      } else {
+        $(".mobilePostsArea").eq(index).removeClass("hidden");
+      }
+    }
   });
 
   $(".menu .item").tab();

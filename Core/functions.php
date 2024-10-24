@@ -18,7 +18,12 @@ function login($user)
 {
 
     $_SESSION["user"] = [
-        "email" => $user["email"]
+        "email" => $user["email"],
+        "name" => ucwords($user["name"]),
+        "userID" => $user["userID"],
+        "role" => $user["role"]
+
+
     ];
 
     // session_regenerate_id(true);

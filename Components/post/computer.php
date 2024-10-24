@@ -16,6 +16,9 @@
         <div class="w-3/12"></div>
         <div class="w-6/12 flex flex-col px-5">
             <div id="shortArticleFront">
+                <!-- <div class="flex justify-center">
+                    <h1 class="w-full text-left text-xl">De: <?= $content["authorName"] ?></h1>
+                </div> -->
                 <h1 class="w-full text-center text-3xl font-bold mb-2"><?= $content["title"] ?></h1>
                 <div class="flex justify-end gap-x-6 py-5">
                     <div class="fb-share-button" data-href="https://orbitaltv.net/<?= $content["slug"] ?>" data-layout="" data-size=""><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>

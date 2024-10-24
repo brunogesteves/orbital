@@ -11,9 +11,9 @@
 
     <script src="/../scripts/jquery.js"></script>
     <script src="/../scripts/tailwind.js"></script>
+    <script src="/../scripts/semantic.min.js"></script>
     <script src="/../scripts/admin.js" defer></script>
     <link rel="shortcut icon" href="../images/orbital/logo.ico" type="image/x-icon" />
-    <script src="/../scripts/semantic.min.js"></script>
     <script src="/../scripts/validate.js"></script>
     <script src="../scripts/validation.js"></script>
     <link rel="stylesheet" type="text/css" href="/../styles/semantic.min.css">
@@ -25,24 +25,28 @@
         <a class="item" href="/admin">Posts</a>
         <a class="item" href="/admin/adicionar">
             Adicionar novo Post</a>
-        <a class="item" href="/admin/ads">Anúncios</a>
-        <a class="item" href="/admin/procurar">
+        <?php if ($_SESSION["user"]["role"] == "dir"): ?>
+            <a class="item" href="/admin/ads">Anúncios</a>
+        <?php endif; ?>
+        <!-- <a class="item" href="/admin/procurar">
             Procurar
-        </a>
+        </a> -->
         <a class="item" href="/admin/imagens">Imagens</a>
         <a class="item" href="/" target="_blank">Home Page</a>
 
     </div>
-    <header class="flex justify-between items-center w-screen mx-0 px-10 py-2 max-[425px]:flex-col max-[425px]:gap-y-5">
+    <header class="flex justify-between items-center  py-2 max-[430px]:flex-col max-[430px]:gap-y-5 ">
         <div class="flex flex-col items-center justify-center">
-            <div class="ui medium">
-                <div class="ui dimmer">
-                    <div class="content">
-                        <div id="changeLogotype" class="ui button">Mudar Logotipo</div>
+            <?php if ($_SESSION["user"]["role"] == "dir"): ?>
+                <div class="ui medium">
+                    <div class="ui dimmer">
+                        <div class="content">
+                            <div id="changeLogotype" class="ui button">Mudar Logotipo</div>
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
                 <img class="ui image size-20 object-center" src="../images/orbital/logo.png">
-            </div>
+                </div>
         </div>
         <img src="../images/icons/menu.svg" alt="logo" class="min-[425px]:hidden rounded-full mt-3 mt-1 w-7 h-7 " id="menu_mobile_open" />
         <div class="ui modal logotype">
@@ -57,9 +61,10 @@
             </div>
         </div>
         <div class="text-2xl" id="timestamp"></div>
-        <div class="flex flex-col items-center">
+        <div class="flex justify-center items-center gap-x-5 text-2xl  h-fit">
+            <?= $_SESSION["user"]["name"] ?>
             <form method="POST" action="../session/destroy">
-                <button type="submit" name="_method" value="DELETE" class=" cursor-pointer text-xl bg-black text-white w-20 text-center mt-3 rounded-md">
+                <button type="submit" name="_method" value="DELETE" class="cursor-pointer text-xl bg-black text-white w-20 text-center rounded-md">
                     Sair</button>
             </form>
         </div>

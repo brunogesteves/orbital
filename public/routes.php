@@ -1,7 +1,6 @@
 <?php
 
 $router->get("/", "Controllers/index.php");
-$router->get("/comingsoon", "Controllers/comingsoon.php");
 $router->get("/admin", "Controllers/Admin/index.php")->only("auth");
 $router->post("/admin/create", "Controllers/Admin/create.php")->only("auth");
 $router->put("/admin/update", "Controllers/Admin/update.php")->only("auth");

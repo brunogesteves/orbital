@@ -10,15 +10,15 @@ $getImages = new Images();
 date_default_timezone_set('America/Sao_Paulo');
 
 $images = $getImages->allImages();
-$post = $db->find("SELECT p.*, i.name as image FROM posts p INNER JOIN images i ON i.id = p.image_id WHERE p.id=$id");
+$post = $db->find("SELECT p.*, i.name as image, u.name as authorName FROM posts p INNER JOIN images i ON i.id = p.image_id INNER JOIN users u ON u.id = p.author_id WHERE p.id=$id");
 
 $scheduled = (new DateTime(date("Y-m-d h:i ", $post["post_at"])))->format('Y-m-d\TH:i');
 
 $minTime = (new DateTime(date('m/d/Y h:i:s a', time())))->format('Y-m-d\TH:i');
 
 require view("/admin/edit.php", [
-    "post" => $post,    
+    "post" => $post,
     "images" => $images,
     "scheduled" => $scheduled,
-    "minTime" => $minTime,    
+    "minTime" => $minTime,
 ]);

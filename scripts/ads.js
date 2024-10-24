@@ -66,18 +66,19 @@ $(document).ready(function () {
     $(".ui.sidebar").sidebar("toggle");
   });
 
-  const tabs = ["mobileAdsfront", "mobileAdsMobile", "mobileAdsSlide"];
+  const tabs = ["adsfront", "adsMobile", "adsSlide"];
+
   $(".selectAdTab").change(function (e) {
     for (let index = 0; index < tabs.length; index++) {
       if (tabs[index] == e.target.value) {
-        $(`#${tabs[index]}`).removeClass("hidden");
+        $(`#${tabs[index]}`).addClass("active");
       } else {
-        $(`#${tabs[index]}`).addClass("hidden");
+        $(`#${tabs[index]}`).removeClass("active");
       }
     }
   });
 
-  // var fixmeTop = $(".selectAdTab").offset().top;
+  var fixmeTop = $(".selectAdTab").offset().top;
 
   $(window).scroll(function () {
     var currentScroll = $(window).scrollTop();
@@ -95,11 +96,6 @@ $(document).ready(function () {
     }
   });
 
-  // $(".openUpdateAdModalbtn").on("click", function () {
-  //   var index = $(".openUpdateAdModalbtn").index(this);
-  //   $(`.fullscreen.updateAdModal:eq(${index})`).modal("toggle");
-  // });
-
   $(".openUpdateAdModalbtn").click(function () {
     var index = $(".openUpdateAdModalbtn").index(this);
     console.log(index);
@@ -108,12 +104,12 @@ $(document).ready(function () {
     const file = $(".file").eq(index).text().trim();
     const position = $(".position").eq(index).text().trim();
     const link = $(".link").eq(index).text().trim();
-    const starts_at = $(".starts_at").eq(index).text().trim();
+    const startsAt = $(".starts_at").eq(index).text().trim();
+    const finistsAt = $(".finishs_at").eq(index).text().trim();
     const postId = $(".postId").eq(index).text().trim();
 
-    console.log(postId);
-
     $("#modalUpdateAdAreaName").val(name);
+    $("#modalUpdateAdAreaHiddenName").val(name);
     $("#previewUploadInputAdImage").html(
       `<img src="../images/ads/${file}" class="thumb-image w-full " />`
     );
@@ -122,42 +118,42 @@ $(document).ready(function () {
     $("#modalUpdateAdAreaId").val(postId);
 
     const newStartsAt =
-      starts_at[6] +
-      starts_at[7] +
-      starts_at[8] +
-      starts_at[9] +
-      starts_at[5] +
-      starts_at[3] +
-      starts_at[4] +
-      starts_at[5] +
-      starts_at[0] +
-      starts_at[1] +
+      startsAt[6] +
+      startsAt[7] +
+      startsAt[8] +
+      startsAt[9] +
+      startsAt[5] +
+      startsAt[3] +
+      startsAt[4] +
+      startsAt[5] +
+      startsAt[0] +
+      startsAt[1] +
       "T" +
-      starts_at[11] +
-      starts_at[12] +
+      startsAt[11] +
+      startsAt[12] +
       ":" +
-      starts_at[14] +
-      starts_at[15];
+      startsAt[14] +
+      startsAt[15];
 
     $("#modalUpdateAdAreaStartsAt").val(newStartsAt.replaceAll("/", "-"));
 
     const newFinishsAt =
-      starts_at[6] +
-      starts_at[7] +
-      starts_at[8] +
-      starts_at[9] +
-      starts_at[5] +
-      starts_at[3] +
-      starts_at[4] +
-      starts_at[5] +
-      starts_at[0] +
-      starts_at[1] +
+      finistsAt[6] +
+      finistsAt[7] +
+      finistsAt[8] +
+      finistsAt[9] +
+      finistsAt[5] +
+      finistsAt[3] +
+      finistsAt[4] +
+      finistsAt[5] +
+      finistsAt[0] +
+      finistsAt[1] +
       "T" +
-      starts_at[11] +
-      starts_at[12] +
+      finistsAt[11] +
+      finistsAt[12] +
       ":" +
-      starts_at[14] +
-      starts_at[15];
+      finistsAt[14] +
+      finistsAt[15];
 
     $("#modalUpdateAdAreaFinishsAt").val(newFinishsAt.replaceAll("/", "-"));
 

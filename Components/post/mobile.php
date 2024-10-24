@@ -1,14 +1,3 @@
-<div class="ui thin sidebar inverted vertical menu">
-    <a class="item">
-        PodCast da Rafa mobile
-    </a>
-    <a class="item">
-        PodCast da Rafa
-    </a>
-    <a class="item">
-        PodCast da Rafa
-    </a>
-</div>
 <header class="bg-[#251014] w-full">
     <div id="sliderAdsHeaderPostMobile" class="h-[100px] w-full -mt-5">
         <?php foreach ($adsPostMobile as $post) : ?>
@@ -21,7 +10,7 @@
         <img src="/images/icons/menuWhite.svg" alt="logo" class="rounded-full mt-3 mt-1 w-7 h-7" id="menu_mobile_open" />
         <a href="/"> <img src="/images/orbital/logo.png" alt="logo" class="rounded-full -mt-2 w-16 h-16 object-center" /></a>
         <div class="mt-2">
-            <a href="/"> <span class="text-white text-3xl font-black font-sans">ORBITAL CHANNEL</span></a>
+            <a href="/"> <span class="text-white text-2xl font-black font-sans">ORBITAL CHANNEL</span></a>
         </div>
     </div>
 </header>
@@ -33,6 +22,9 @@
 
 <main class="h-auto w-12/12 px-4 h-[calc(100vh_-_272px)]">
     <div id="shortArticleMobile">
+        <!-- <div class="flex justify-center">
+            <h1 class="w-full text-left text-xl mt-3">De: <?= $content["authorName"] ?></h1>
+        </div> -->
         <h1 class="w-full text-center text-[28px] font-bold mb-2 leading-10">
             <?= $content["title"] ?></h1>
         <div class="flex gap-y-7 justify-end items-center gap-x-7 p-2 rounded-md max-sm:justify-center max-sm:my-5">

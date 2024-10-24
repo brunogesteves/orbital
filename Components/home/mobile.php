@@ -1,14 +1,3 @@
-<div class="ui thin sidebar inverted vertical menu">
-    <a class="item">
-        PodCast da Rafa mobile
-    </a>
-    <a class="item">
-        PodCast da Rafa
-    </a>
-    <a class="item">
-        PodCast da Rafa
-    </a>
-</div>
 <header class="bg-[#251014] w-full">
     <div id="sliderAdsHeaderMobile" class="h-[100px] w-full">
         <?php foreach ($adsMobile as $post) : ?>

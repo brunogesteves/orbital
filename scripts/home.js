@@ -25,4 +25,8 @@ $(document).ready(() => {
 
     $("#completeArticleFront").show();
   });
+
+  $("#menu_mobile_open").on("click", function () {
+    $(".ui.sidebar").sidebar("toggle");
+  });
 });

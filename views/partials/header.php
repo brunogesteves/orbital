@@ -7,7 +7,7 @@
     <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
     <meta http-equiv="Pragma" content="no-cache">
     <META HTTP-EQUIV="Expires" CONTENT="-1">
-    
+
     <script type="text/javascript" src="/scripts/jquery.js"></script>
     <script type="text/javascript" src="/scripts/slider.js"></script>
     <script src="/scripts/tailwind.js"></script>
@@ -38,3 +38,7 @@
 
 
 <body class="m-auto p-auto">
+    <div class="ui thin sidebar inverted vertical menu">
+        <!-- <a class="item" href="/admin">Posts</a> -->
+
+    </div>
