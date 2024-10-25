@@ -28,7 +28,7 @@ $(document).ready(() => {
         width: "90%",
         height: "50vh",
         placeholder: "Crie o post....É obrigatório",
-        imageGalleryUrl: "http://orbitaltv.net/Components/gallery.php",
+        imageGalleryUrl: "http://orbitaltv.net/Core/gallery.php",
         videoFileInput: false,
         audioUrlInput: false,
         tabDisable: false,
@@ -88,7 +88,7 @@ $(document).ready(() => {
   $(".openAddImageModalBtn").on("click", () => {
     $.ajax({
       type: "GET",
-      url: "/Controllers/Admin/add/getImages.php",
+      url: "/Core/getImages.php",
       success: function (data) {
         $("#allimages").empty();
         $("#allimages").append(data);

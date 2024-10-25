@@ -12,19 +12,6 @@ class Database
     public function __construct()
     {
 
-        // $config = [
-        //     "host" => "localhost",
-        //     "port" => 3306,
-        //     "dbname" => "orbital",
-        //     "charset" => "utf8mb4"
-        // ];
-
-        // $dsn = 'mysql:' . http_build_query($config, "", ";");
-
-        // $this->connection = new PDO($dsn, "root", "", [
-        //     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-        // ]);
-
         $config = [
             "host" => $_ENV["HOST"],
             "port" => $_ENV["PORT"],

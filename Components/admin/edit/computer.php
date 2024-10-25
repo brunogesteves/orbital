@@ -43,28 +43,25 @@
 
     </section>
 </div>
-<div class="ui modal editImageModal h-screen">
+<div class="ui modal editImageModal overflow-y-auto h-[calc(100vh_-_161px)]">
     <div class="flex justify-start gap-x-5 flex-wrap overflow-y-auto gap-y-5">
         <div class="closeEditImageModalBtn pl-3 mt-3 cursor-pointer">X</div>
-        <?php
-        foreach ($images as $image) : ?>
-            <div class="cursor-pointer w-1/6 m-2 h-[150px] max-[425px]:w-full max-[425px]:h-auto">
-                <div class="ui dimmable image">
-                    <div class="ui dimmer">
-                        <div class="">
-                            <div class="ui button seeImage">Ver</div>
-                            <button class="ui primary button selectImage">Selecionar</button>
-                            <input type="hidden" value=<?= $image["name"] ?> class="imageName" />
-                            <input type="hidden" value=<?= $image["id"] ?> class="imageId" />
-                        </div>
-                    </div>
-                    <img src="../images/<?= $image["name"] ?>" alt=<?= $image["name"] ?> class="w-full min-h-40" />
-                </div>
-            </div>
-        <?php endforeach; ?>
+        <div class="w-full flex justify-center mb-5">
+            <button id="addNewImageBtn" class="p-5 bg-red-500 cursor-pointer">Adicionar</button>
+        </div>
+        <div id="allimages" class="flex justify-center items-center flex-wrap gap-10 max-[430px]:h-full">
+        </div>
     </div>
 </div>
 <div class="ui modal fullScreen modalSelectImage">
     <div class="text-xl ml-3 mt-3 cursor-pointer closeImage">X</div>
     <div class="modalImage" class="flex justify-center mb-5"></div>
+</div>
+<div class="ui modal h-screen newImageModal ">
+    <div class="closeAddImageModalBtn pl-3 my-3 cursor-pointer max-[430px]:text-xl">X</div>
+    <div class="w-full flex max-[430px]:flex-col justify-center items-start max-[430px]:items-center gap-x-5">
+        <input type="file" name="file" id="file" required accept=".jpg, .jpeg, .png" />
+        <button type="button" id="submitNewImage" class="text-white bg-black my-7 p-2 rounded-lg text-xl">adicionar</button>
+    </div>
+    <div class="previewInputImage flex justify-center h-1/2"></div>
 </div>

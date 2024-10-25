@@ -43,7 +43,6 @@
         <button id="addNewImageBtn" class="p-5 bg-red-500 cursor-pointer">Adicionar</button>
     </div>
     <div id="allimages" class="flex justify-center items-center flex-wrap gap-10 max-[430px]:h-full">
-
     </div>
 </div>
 

@@ -24,7 +24,7 @@ $(document).ready(() => {
         width: "90%",
         height: "50vh",
         placeholder: "Crie o post....É obrigatório",
-        imageGalleryUrl: "http://orbitaltv.net/Components/gallery.php",
+        imageGalleryUrl: "http://orbitaltv.net/Core/gallery.php",
         videoFileInput: false,
         audioUrlInput: false,
         tabDisable: false,
@@ -62,7 +62,7 @@ $(document).ready(() => {
             "imageGallery",
             "fullScreen",
             "showBlocks",
-            "codeView",
+            // "codeView",
             "preview",
             "print",
             "save",
@@ -111,6 +111,90 @@ $(document).ready(() => {
     );
     $(".image_id").val(imageId);
     $(".editImageModal").modal("hide");
+  });
+
+  $(".openEditImageModalBtn").on("click", () => {
+    $.ajax({
+      type: "GET",
+      url: "/Core/getImages.php",
+      success: function (data) {
+        $("#allimages").empty();
+        $("#allimages").append(data);
+        $(".selectImageModal").modal("show");
+        $(".ui.dimmable").dimmer({
+          on: "hover",
+        });
+        $(".selectImage").click(function () {
+          var index = $(".selectImage").index(this);
+          const fileName = $(".imageName").eq(index).val();
+          const imageId = $(".imageId").eq(index).val();
+          $(".previewImage").html(
+            `<img src=../images/${fileName} class="max-h-72" />`
+          );
+          $(".image_id").val(imageId);
+          $(".selectImageModal").modal("hide");
+        });
+
+        $(".seeImage").click(function () {
+          var index = $(".seeImage").index(this);
+          const fileName = $(".imageName").eq(index).val();
+          $(".selectImageModal").modal("hide");
+          $(".fullScreen.modalSelectImage").modal("show");
+          $("#modalImage").html(`     
+    <img src=../images/${fileName}  />`);
+        });
+      },
+
+      error: function (res) {
+        alert("error");
+      },
+    });
+    $(".selectImageModal").modal("show");
+  });
+
+  $("#submitNewImage").on("click", function () {
+    var file = document.getElementById("file").files[0];
+    var form_data = new FormData();
+    form_data.append("file", file);
+    $.ajax({
+      type: "POST",
+      url: "/Controllers/Admin/add/upload.php",
+      data: form_data,
+      contentType: false,
+      cache: false,
+      processData: false,
+      success: function (data) {
+        $(".newImageModal").modal("hide");
+        $(".selectImageModal").modal("show");
+        $("#allimages").prepend(data);
+        $(".selectImageModal").modal("show");
+        $(".ui.dimmable").dimmer({
+          on: "hover",
+        });
+        $(".selectImage").click(function () {
+          var index = $(".selectImage").index(this);
+          const fileName = $(".imageName").eq(index).val();
+          const imageId = $(".imageId").eq(index).val();
+          $(".previewImage").html(
+            `<img src=../images/${fileName} class="max-h-72" />`
+          );
+          $(".image_id").val(imageId);
+          $(".selectImageModal").modal("hide");
+        });
+
+        $(".seeImage").click(function () {
+          var index = $(".seeImage").index(this);
+          const fileName = $(".imageName").eq(index).val();
+          $(".selectImageModal").modal("hide");
+          $(".fullScreen.modalSelectImage").modal("show");
+          $("#modalImage").html(`     
+    <img src=../images/${fileName}  />`);
+        });
+      },
+      error: function (res) {
+        alert("error");
+      },
+    });
   });
 
   $(".ui.dimmable").dimmer({

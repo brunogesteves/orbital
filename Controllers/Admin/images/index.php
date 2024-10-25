@@ -1,10 +1,10 @@
 <?php
 
 
-use Core\Database;
+use Core\Images;
 
-$db = new Database();
-$images = $db->findAll("select * from images");
+$db = new Images();
+$images = $db->allImages();
 
 
 require view("/admin/images.php", [
