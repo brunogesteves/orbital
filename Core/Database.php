@@ -66,7 +66,7 @@ class Database
 
     public function lastId($query)
     {
-        self::query($query);
+        self::query("SELECT LAST_INSERT_ID()	");
         return $this->statment->fetchColumn();
     }
 

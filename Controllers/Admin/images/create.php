@@ -1,29 +1,18 @@
 <?php
 
 
-use Core\Database;
+require_once realpath(__DIR__ . '/../../../vendor/autoload.php');
 
-$db = new Database();
+// Looing for .env at the root directory
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/../../../public");
+$dotenv->load();
 
-$fileName = str_replace(" ","_",$_FILES["image"]["name"]);
-$tempName = $_FILES["image"]["tmp_name"];
-$fileSize = $_FILES["image"]['size'];
-$fileError = $_FILES["image"]['error'];
-$target = "images/" . $fileName;
+require "./Core/Database.php";
+require "./Core/Images.php";
 
-if ($fileError === 0 && $fileSize > 0) {
-    if (file_exists($target)) {        
-        $separateFilename = explode('.', $target);
-        $ext = $separateFilename[1];
-        $target = $separateFilename[0] . "(1)." . $ext;
-    }
-}
-if (move_uploaded_file($tempName, $target)) {
-    $db->insert('INSERT INTO images(name) VALUES(:fileName)', [
-        "fileName" => $fileName
-    ]);
+use Core\Images;
 
-}
+$db = new Images();
 
+$db->uploadImage($_FILES, "");
 header("Location:" . "/admin/imagens");
-

@@ -22,7 +22,7 @@
                 <p class="text-black text-3xl  font-black font-sans">Essa página não existe
                 </p>
                 <button class="text-black text-xl  font-black font-sans">
-                    <a href="/">Home</a>
+                    <a href="/">Retornar página inicial</a>
                 </button>
             </div>
         </div>

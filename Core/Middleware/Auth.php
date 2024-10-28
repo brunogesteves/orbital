@@ -8,7 +8,7 @@ class Auth
     {
 
         if (!$_SESSION["user"] ?? false) {
-            header('location: /comingsoon');
+            header('location: /404');
             exit();
         }
     }

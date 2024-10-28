@@ -15,7 +15,7 @@
     <script src="/../scripts/admin.js" defer></script>
     <link rel="shortcut icon" href="../images/orbital/logo.ico" type="image/x-icon" />
     <script src="/../scripts/validate.js"></script>
-    <script src="../scripts/validation.js"></script>
+    <script src="/../scripts/validation.js"></script>
     <link rel="stylesheet" type="text/css" href="/../styles/semantic.min.css">
     <title>Orbital Channel</title>
 </head>

@@ -9,7 +9,7 @@ $db = new Database();
 $getImages = new Images();
 date_default_timezone_set('America/Sao_Paulo');
 
-$images = $getImages->allImages();
+$images = $getImages->getImages();
 $post = $db->find("SELECT p.*, i.name as image, u.name as authorName FROM posts p INNER JOIN images i ON i.id = p.image_id INNER JOIN users u ON u.id = p.author_id WHERE p.id=$id");
 
 $scheduled = (new DateTime(date("Y-m-d h:i ", $post["post_at"])))->format('Y-m-d\TH:i');

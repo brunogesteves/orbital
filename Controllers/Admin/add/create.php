@@ -10,7 +10,7 @@ $createSlug = new Slug();
 date_default_timezone_set('America/Sao_Paulo');
 
 $title = trim($_POST["title"]);
-$post_at = $_SESSION["user"]["role"] != "dir" ? time() : $_POST["post_at"];
+$post_at = $_SESSION["user"]["role"] != "dir" ? 0 : $_POST["post_at"];
 $section = $_SESSION["user"]["role"] != "dir" ? "0" : $_POST["section"];
 $image_id = (int) $_POST["image_id"];
 $content = trim($_POST["content"]);

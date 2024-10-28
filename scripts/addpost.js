@@ -128,11 +128,6 @@ $(document).ready(() => {
     $(".selectImageModal").modal("hide");
   });
 
-  $(".closeAddImageModalBtn").on("click", () => {
-    $(".newImageModal").modal("hide");
-    $(".selectImageModal").modal("show");
-  });
-
   $(".modalSelectImageCloseBtn").click(function () {
     $(".selectImageModal").modal("show");
   });
@@ -152,10 +147,10 @@ $(document).ready(() => {
   $("#submitNewImage").on("click", function () {
     var file = document.getElementById("file").files[0];
     var form_data = new FormData();
-    form_data.append("file", file);
+    form_data.append("image", file);
     $.ajax({
       type: "POST",
-      url: "/Controllers/Admin/add/upload.php",
+      url: "/Core/upload.php",
       data: form_data,
       contentType: false,
       cache: false,

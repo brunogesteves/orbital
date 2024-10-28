@@ -1,11 +1,12 @@
 <?php
+
 use Core\Database;
 use Core\Images;
 
 $db = new Database();
 $getImages = new Images();
 
-$images = $getImages->allImages();
+$images = $getImages->getImages();
 
 $frontAds = $db->findAll("SELECT * FROM ads  WHERE position= 'front'  ORDER BY starts_at DESC");
 $mobileAds = $db->findAll("SELECT * FROM ads WHERE position= 'mobile'  ORDER BY starts_at DESC");

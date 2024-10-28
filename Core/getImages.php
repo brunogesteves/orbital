@@ -13,7 +13,7 @@ use Core\Images;
 
 
 $db = new Images();
-$getImages = $db->allImages();
+$getImages = $db->getImages();
 
 foreach ($getImages as $image) {
     echo '

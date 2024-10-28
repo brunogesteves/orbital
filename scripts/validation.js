@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  $(".addpost").validate({
+  $(".addPostComputer").validate({
     ignore: "",
     rules: {
       title: {
@@ -22,7 +22,30 @@ $(document).ready(() => {
     },
   });
 
-  $(".editpost").validate({
+  $(".addPostMobile").validate({
+    ignore: "",
+    rules: {
+      title: {
+        required: true,
+        maxlength: 60,
+      },
+      post_at: "required",
+      image_id: "required",
+      content: "required",
+    },
+    messages: {
+      title:
+        "<p class='text-red-500'>Escolha um título de até 60 caracteres</p>",
+      post_at: "<p class='text-red-500'>Escolha uma data</p>",
+      image_id: "<p class='text-red-500'>Escolha uma thumb</p>",
+      content: "<p class='text-red-500'>Conteúdo Obrigatório</p>",
+    },
+    submitHandler: function (form) {
+      form.submit();
+    },
+  });
+
+  $(".editpostComputer").validate({
     ignore: "",
     rules: {
       title: {
@@ -38,7 +61,30 @@ $(document).ready(() => {
       title:
         "<p class='text-red-500'>Escolha um título de até 60 caracteres</p>",
       adFile: "<p class='text-red-500'>Escolha uma data</p>",
+      image_id: "<p class='text-red-500'>Escolha uma thumb</p>",
+      content: "<p class='text-red-500'>Conteúdo Obrigatório</p>",
+    },
+    submitHandler: function (form) {
+      form.submit();
+    },
+  });
 
+  $(".editpostMobile").validate({
+    ignore: "",
+    rules: {
+      title: {
+        required: true,
+        maxlength: 60,
+      },
+      post_at: "required",
+      image_id: "required",
+      content: "required",
+    },
+
+    messages: {
+      title:
+        "<p class='text-red-500'>Escolha um título de até 60 caracteres</p>",
+      adFile: "<p class='text-red-500'>Escolha uma data</p>",
       image_id: "<p class='text-red-500'>Escolha uma thumb</p>",
       content: "<p class='text-red-500'>Conteúdo Obrigatório</p>",
     },

@@ -6,9 +6,9 @@
     </div>
     <section class="w-10/12 flex justify-center items-start">
         <div class="w-4/12 h-fit flex flex-col">
-            <form method="post" action="/admin/editar/update" class="flex justify-between text-center px-5 w-full h-full pt-2 ">
+            <form method="post" action="/admin/editar/update" class="flex justify-between text-center px-5 w-full h-full pt-2 editpostComputer">
                 <div class="flex justify-start flex-col w-full gap-y-5 overflow-y-auto">
-                    <button type="submit" name="_method" value="put" class="ui approve button editpost">Atualizar</button>
+                    <button type="submit" name="_method" value="put" class="ui approve button">Atualizar</button>
                     <input type="text" name="title" value="<?= $post["title"]; ?>" class="bg-slate-300 px-2 outline-none rounded-md border border-black placeholder:text-black placeholder:text-opacity-30" placeholder="nome do post" />
                     <?php if ($_SESSION["user"]["role"] == "dir"): ?>
                         Criado por : <?= $post["authorName"] ?>
@@ -22,7 +22,7 @@
                         </select>
                     <?php endif; ?>
 
-                    <div class="previewEditImage"></div>
+                    <div class="previewImage"></div>
 
                     <div class="ui approve button openEditImageModalBtn">Mudar uma Thumb</div>
                     <input type="hidden" class="oldContentComputer" value="<?= htmlentities($post["content"]) ?>" />
@@ -43,8 +43,8 @@
 
     </section>
 </div>
-<div class="ui modal editImageModal overflow-y-auto h-[calc(100vh_-_161px)]">
-    <div class="flex justify-start gap-x-5 flex-wrap overflow-y-auto gap-y-5">
+<div class="ui modal selectImageModal overflow-y-auto h-[calc(100vh_-_161px)]">
+    <div class="flex justify-start gap-5 flex-wrap">
         <div class="closeEditImageModalBtn pl-3 mt-3 cursor-pointer">X</div>
         <div class="w-full flex justify-center mb-5">
             <button id="addNewImageBtn" class="p-5 bg-red-500 cursor-pointer">Adicionar</button>

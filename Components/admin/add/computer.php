@@ -7,7 +7,7 @@
     </div>
     <section class="w-10/12 flex justify-center items-start">
         <div class="w-4/12 h-fit flex flex-col">
-            <form method="post" name="addpost" action="/admin/adicionar/create" class="flex justify-between text-center px-5 w-full h-full pt-2 addpost">
+            <form method="post" action="/admin/adicionar/create" class="flex justify-between text-center px-5 w-full h-full pt-2 addPostComputer">
                 <div class="flex justify-start flex-col w-full gap-y-5 overflow-y-auto">
                     <button type="submit" class="ui approve button">Salvar</button>
                     <input type="text" name="title" class="bg-slate-300 px-2 outline-none rounded-md border border-black placeholder:text-black placeholder:text-opacity-30" placeholder="nome do post" />

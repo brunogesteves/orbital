@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  $(".previewEditImage").html(
+  $(".previewImage").html(
     `<img src=../images/${$(
       ".oldImageThumbComputer"
     ).val()} class="max-h-72" />`
@@ -85,7 +85,7 @@ $(document).ready(() => {
   });
 
   $(".closeEditImageModalBtn").on("click", () => {
-    $(".editImageModal").modal("hide");
+    $(".selectImageModal").modal("hide");
   });
 
   $(".seeImage").click(function () {
@@ -110,6 +110,7 @@ $(document).ready(() => {
       `<img src=../images/${fileName} class="max-h-72" />`
     );
     $(".image_id").val(imageId);
+    console.log($(".image_id").val(imageId));
     $(".editImageModal").modal("hide");
   });
 
@@ -126,7 +127,9 @@ $(document).ready(() => {
         });
         $(".selectImage").click(function () {
           var index = $(".selectImage").index(this);
+          console.log(index);
           const fileName = $(".imageName").eq(index).val();
+          console.log(fileName);
           const imageId = $(".imageId").eq(index).val();
           $(".previewImage").html(
             `<img src=../images/${fileName} class="max-h-72" />`
@@ -152,13 +155,34 @@ $(document).ready(() => {
     $(".selectImageModal").modal("show");
   });
 
+  $("#addNewImageBtn").click(function () {
+    $(".selectImageModal").modal("hide");
+    $(".newImageModal").modal("show");
+  });
+
+  $("#file").on("change", function () {
+    if (typeof FileReader != "undefined") {
+      var previewInputImage = $("#previewInputImage");
+      previewInputImage.empty();
+
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $(".previewInputImage").html(
+          `<img src=${e.target.result} class="thumb-image w-auto max-[425px]:w-full " />`
+        );
+      };
+      previewInputImage.show();
+      reader.readAsDataURL($(this)[0].files[0]);
+    }
+  });
+
   $("#submitNewImage").on("click", function () {
     var file = document.getElementById("file").files[0];
     var form_data = new FormData();
-    form_data.append("file", file);
+    form_data.append("image", file);
     $.ajax({
       type: "POST",
-      url: "/Controllers/Admin/add/upload.php",
+      url: "/Core/upload.php",
       data: form_data,
       contentType: false,
       cache: false,

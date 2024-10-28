@@ -6,7 +6,7 @@ use Core\Images;
 
 $getImages = new Images();
 
-$images = $getImages->allImages();
+$images = $getImages->getImages();
 $minTime = (new DateTime(date('m/d/Y h:i:s a', time())))->format('Y-m-d\TH:i');
 
 

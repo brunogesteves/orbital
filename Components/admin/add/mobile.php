@@ -1,5 +1,5 @@
 <div class="h-full w-full flex flex-col justify-start">
-    <form method="post" name="addpost" action="/admin/adicionar/create" class="flex justify-between text-center px-5 w-full h-fit pt-2 mb-5">
+    <form method="post" action="/admin/adicionar/create" class="flex justify-between text-center px-5 w-full h-fit pt-2 mb-5 addPostMobile">
         <div class="flex justify-start flex-col w-full gap-y-5 overflow-y-auto">
             <button type="submit" class="ui approve button">Salvar</button>
             <input type="text" name="title" value="<?= $tempContent["title"]; ?>" class="bg-slate-300 px-2 outline-none rounded-md border border-black placeholder:text-black placeholder:text-opacity-30" placeholder="nome do post" />

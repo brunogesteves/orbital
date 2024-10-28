@@ -27,6 +27,8 @@ $router->post("/admin/imagens/create", "Controllers/Admin/images/create.php")->o
 $router->put("/admin/imagens/logotype", "Controllers/Admin/images/logotype.php")->only("auth");
 $router->delete("/admin/imagens/destroy", "Controllers/Admin/images/destroy.php")->only("auth");
 
+$router->get("/404", "views/abort.php");
+
 $router->get("/login", "Controllers/login/index.php");
 
 $router->post("/session/store", "Session/store.php");
