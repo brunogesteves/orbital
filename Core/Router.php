@@ -26,6 +26,8 @@ class Router
         $uri,
         $controller
     ) {
+        // echo $uri;
+        // echo $controller;
         return $this->add("GET", $uri, $controller);
     }
 
@@ -65,13 +67,14 @@ class Router
         $method
     ) {
 
-        
+
         foreach ($this->routes as $route) {
-            if ($route["uri"] == $uri && $route["method"] == strtoupper($method)) {                    
+            if ($route["uri"] == $uri && $route["method"] == strtoupper($method)) {
                 Middleware::resolve($route["middleware"]);
                 return require $route["controller"];
             }
         }
+
         return require "Controllers/post.php";
     }
 }

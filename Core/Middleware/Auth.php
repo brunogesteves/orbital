@@ -7,7 +7,7 @@ class Auth
     public function handle()
     {
 
-        if (!$_SESSION["user"] ?? false) {
+        if (empty($_SESSION["user"])) {
             header('location: /404');
             exit();
         }

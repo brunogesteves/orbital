@@ -99,10 +99,22 @@ class Slug
 
                 );
 
+
                 // -- Remove duplicated spaces
                 $stripped = preg_replace(array('/\s{2,}/', '/[\t\n]/'), ' ', $string);
 
                 // -- Returns the slug
                 return strtolower(strtr($string, $table));
+        }
+
+
+        function formatText($string)
+        {
+
+                $table = [
+                        "'" => "\'",
+                        '"' => '\"',
+                ];
+                return strtr($string, $table);
         }
 }

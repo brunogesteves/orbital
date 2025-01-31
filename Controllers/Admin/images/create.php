@@ -7,12 +7,10 @@ require_once realpath(__DIR__ . '/../../../vendor/autoload.php');
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/../../../public");
 $dotenv->load();
 
-require "./Core/Database.php";
-require "./Core/Images.php";
 
 use Core\Images;
 
 $db = new Images();
 
-$db->uploadImage($_FILES, "");
+$db->uploadImage("images", $_FILES);
 header("Location:" . "/admin/imagens");

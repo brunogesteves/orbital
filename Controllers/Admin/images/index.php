@@ -4,9 +4,7 @@
 use Core\Images;
 
 $db = new Images();
-$images = $db->getImages();
+$allImages = $db->getImages();
 
 
-require view("/admin/images.php", [
-    "images" => $images
-]);
+require view("/admin/images.php");

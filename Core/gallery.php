@@ -1,5 +1,3 @@
-
-
 <?php
 require_once realpath(__DIR__ . '/../vendor/autoload.php');
 
@@ -21,7 +19,7 @@ class Gallery
     public function index()
     {
         $db = new Images();
-        $images = $db->allImages();
+        $images = $db->getImages();
 
         header("Content-Type: application/json");
 
@@ -34,7 +32,7 @@ class Gallery
         foreach ($images as $image) {
 
             array_push($list, [
-                "src" => "http://orbitaltv.net/images/" . $image["name"],
+                "src" => "http://localhost:8000/public/images/" . $image["name"],
 
                 "name" => $image["name"]
             ]);

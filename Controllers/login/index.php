@@ -1,11 +1,15 @@
 <?php
 
 
+
+$_SESSION["formErrors"] = [
+    "email" => "",
+    "password" => "",
+
+];
+$_SESSION["warningAcess"] = "";
 $formErrors = $_SESSION["formErrors"];
 $warningAcess = $_SESSION["warningAcess"];
-
-$_SESSION["formErrors"] = [];
-$_SESSION["warningAcess"] = "";
 
 require view("login.php", [
     "formErrors" => $formErrors,

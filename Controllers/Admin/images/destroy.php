@@ -7,7 +7,7 @@ $db = new Database();
 
 
 $imageId = (int) $_POST["imageId"];
-$isDeleted = $db->delete('DELETE FROM images WHERE id=:id', [
+$isDeleted = $db->delete('DELETE FROM images WHERE id=:id ', [
     "id" => $imageId
 ]);
 

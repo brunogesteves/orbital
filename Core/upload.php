@@ -6,29 +6,19 @@ require_once realpath(__DIR__ . '/../vendor/autoload.php');
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/../public/");
 $dotenv->load();
 
-require "./Database.php";
-require "./Images.php";
-
 use Core\Images;
 
-
 $db = new Images();
-$db->uploadImage($_FILES, "upload");
+
+$db->uploadImage("post", $_FILES);
 $result = $db->getUniqueImage();
 
-echo '
-        <div class="selectNewImage cursor-pointer w-1/4 px-5 h-[150px] max-[430px]:w-full max-[430px]:h-auto">
-                <div class="ui dimmable image">
-                    <div class="ui dimmer">
-                        <div>
-                            <div class="ui button seeImage">Ver</div>
-                            <button class="ui primary button selectImage">Selecionar</button>
-                            <input type="hidden" class="imageName" value=' . $result['name'] . ' />
-                            <input type="hidden" class="imageId" value=' . $result['id'] . ' />
+echo '      
+    <div data-image="' . $result['name'] . '" data-id="' . $result['id'] . '"
+     class="selectImage cursor-pointer w-1/4 max-[768px]:w-full p-1 h-auto relative group">
+         <img src="../public/images/' . $result['name'] . '" alt="' . $result['name'] . '" class="w-full
+object-scale-down max-h-full m-auto group-hover:opacity-50" />
+                <span class="absolute top-1/2 left-1/4 text-white text-6xl hidden group-hover:block">adicionar</span>
 
-                        </div>
-                    </div>
-                    <img src="../images/' . $result['name'] . '" alt="' . $result['name'] . '" class="w-full h-full selectNewImage" />
-                </div>
-            </div>
+</div>
 ';
