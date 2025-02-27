@@ -1,4 +1,4 @@
-<div class="postsArea flex justify-start flex-wrap items-center w-full gap-y-5  h-auto overflow-hidden">
+<div class="postsArea flex justify-start flex-wrap items-center w-full h-auto overflow-hidden">
     <?php foreach ($allPosts as $post): ?>
         <div class="w-1/4 max-[767px]:w-full h-auto relative cursor-pointer p-1">
             <img src=<?= insertImage($post["image"]) ?> class="bg-black w-full  hover:opacity-50 " />
@@ -27,12 +27,15 @@
                     <?= $post["status"] == "on" ? "Despublicar" : "Publicar" ?>
                 </button>
             </form>
-            <form method="POST" action="/admin/post/destroy" class="flex items-center absolute top-2 right-2">
-                <input type="hidden" name="deletePostId" value=<?= $post['id'] ?> />
-                <button type="submit" class="rounded-md" name="_method" value="DELETE">
-                    <img src=<?= insertImage("icons/trash.png") ?> alt="trash" class="w-7" />
-                </button>
-            </form>
+
+            <?php if ($post["status"] !== "on"): ?>
+                <form method="POST" action="/admin/post/destroy" class="flex items-center absolute top-2 right-2">
+                    <input type="hidden" name="deletePostId" value=<?= $post['id'] ?> />
+                    <button type="submit" class="rounded-md" name="_method" value="DELETE">
+                        <img src=<?= insertImage("icons/trash.png") ?> alt="trash" class="w-7" />
+                    </button>
+                </form>
+            <?php endif; ?>
         </div>
     <?php endforeach; ?>
 </div>

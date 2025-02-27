@@ -47,4 +47,4 @@ include insertComponent("admin/header.php");
 <?php
 include insertComponent("admin/footer.php");
 ?>
-<script src=<?= insertComponent("ads.js") ?> defer></script>
+<script src=<?= insertAdminScript("ads.js") ?> defer></script>

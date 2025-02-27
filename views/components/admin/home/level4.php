@@ -1,6 +1,12 @@
-<div class="postsArea flex justify-start flex-wrap items-center h-auto w-full gap-5 h-auto overflow-hidden">
+<div class="flex justify-center w-full my-3">
+    <span class="text-3xl mr-3">O nível 4 tem: </span>
+    <span class="text-3xl <?php if (sizeof($level4) < 9) echo "text-red-500";  ?>">
+        <?= sizeof($level4) ?></span>
+    <span class="text-3xl"> / 9</span>
+</div>
+<div class="postsArea flex justify-start flex-wrap items-center h-auto w-full">
     <?php foreach ($level4 as $post): ?>
-        <div class="w-1/4 max-[767px]:w-full h-full relative bg-black cursor-pointer">
+        <div class="w-1/4 max-[767px]:w-full h-full relative cursor-pointer p-1">
             <img src=<?= insertImage($post["image"]) ?> class="w-full  hover:opacity-50 " />
             <p class=" title absolute top-0 left-0 text-white text-xl pl-3 shadow">
                 titulo
@@ -27,12 +33,12 @@
                     <?= $post["status"] == "on" ? "Despublicar" : "Publicar" ?>
                 </button>
             </form>
-            <form method="POST" action="/admin/post/destroy" class="flex items-center absolute top-2 right-2">
+            <!-- <form method="POST" action="/admin/post/destroy" class="flex items-center absolute top-2 right-2">
                 <input type="hidden" name="deletePostId" value=<?= $post['id'] ?> />
                 <button type="submit" class="rounded-md" name="_method" value="DELETE">
                     <img src=<?= insertImage("icons/trash.png") ?> alt="trash" class="w-7" />
                 </button>
-            </form>
+            </form> -->
         </div>
     <?php endforeach; ?>
 </div>

@@ -14,9 +14,9 @@ include insertComponent("admin/header.php");
             <button type="submit" class="w-full text-white bg-black my-7 p-2 rounded-lg text-xl">Procurar</button>
         </form>
 
-        <div class=" w-full h-[calc(100vh_-_261px)] overflow-y-auto flex flex-wrap justify-start items-center gap-5">
+        <div class=" w-full h-[calc(100vh_-_261px)] overflow-y-auto flex flex-wrap justify-start items-center">
             <?php foreach ($images as $post): ?>
-                <div class="w-1/4 max-[767px]:w-full h-auto relative bg-black">
+                <div class="w-1/4 max-[767px]:w-full h-auto relative p-1">
                     <img src=<?= insertAdminImage("azeite.jpg") ?>
                         class="w-full  hover:opacity-50 max-[768px]:opacity-50" />
                     <p class=" title absolute top-0 left-0 text-white text-xl pl-3 shadow">

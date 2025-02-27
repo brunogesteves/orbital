@@ -14,19 +14,19 @@ include insertComponent("admin/header.php");
             </button>
             <button aria-current="page" onclick="showTab('tab1')"
                 class="tab-button w-full flex justify-center font-medium rounded-l px-5 py-2 border bg-white text-gray-800 border-gray-200 rounded hover:bg-red-200">
-                Level1
+                Nível 1
             </button>
             <button aria-current="false" onclick="showTab('tab2')"
                 class="tab-button w-full flex justify-center font-medium rounded-l px-5 py-2 border bg-white text-gray-800 border-gray-200 rounded hover:bg-red-200">
-                Level2
+                Nível 2
             </button>
             <button aria-current="false" onclick="showTab('tab3')"
                 class="tab-button w-full flex justify-center font-medium rounded-l px-5 py-2 border bg-white text-gray-800 border-gray-200 rounded hover:bg-red-200">
-                Level3
+                Nível 3
             </button>
             <button aria-current="false" onclick="showTab('tab4')"
                 class="tab-button w-full flex justify-center font-medium rounded-l px-5 py-2 border bg-white text-gray-800 border-gray-200 rounded hover:bg-red-200">
-                Level4
+                Nível 4
             </button>
 
         </div>
