@@ -1,4 +1,5 @@
 /vendor/
 .env
+.views/pages/index2.php
 .htaccess
 .vscode/
