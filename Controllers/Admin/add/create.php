@@ -7,20 +7,19 @@ $db = new Database();
 $createSlug = new Slug();
 
 
-date_default_timezone_set('America/Sao_Paulo');
+date_default_timezone_set(timezoneId: 'America/Sao_Paulo');
 
 $title = trim($_POST["title"]);
-// $post_at = $_SESSION["user"]["role"] != "dir" ? 0 : $_POST["post_at"];
-$post_at = strtotime($_POST["post_at"]);
-// $section = $_SESSION["user"]["role"] != "dir" ? "0" : $_POST["section"];
-$section = $_POST["section"];
+$post_at = $_SESSION["user"]["role"] != "dir" ? 0 : strtotime($_POST["post_at"]);
+$section = $_SESSION["user"]["role"] != "dir" ? "0" : $_POST["section"];
 $image_id = (int) $_POST["image_id"];
+$category = $_POST["category"];
 $content = trim($createSlug->formatText($_POST["content"]));
 $slug = trim($createSlug->create($_POST["title"]));
-// $status = $_SESSION["user"]["role"] != "dir" ? "off" : "on";
-$status =  "on";
-// $author_id = (int) $_SESSION["user"]["userID"];
-$author_id = 1;
+$status = $_SESSION["user"]["role"] != "dir" ? "off" : "on";
+
+$author_id = (int) $_SESSION["user"]["userID"];
+
 
 
 
@@ -30,10 +29,13 @@ $result = $db->insert('INSERT INTO posts(title,  content, section, slug, status,
     "content" => $content,
     "section" => $section,
     "slug" => $slug,
-    "status" => "off",
+    "status" => $status,
     "post_at" => $post_at,
+    "category_id" => $category,
     "image_id" => $image_id,
-    "author_id" => $author_id
+    "author_id" => $author_id,
+    "created_at" => time(),
+    "upated_at" => 0
 
 ]);
 

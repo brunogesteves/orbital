@@ -2,7 +2,7 @@
 include insertComponent("admin/header.php");
 ?>
 
-<div id="size"></div>
+<!-- <div id="size"></div> -->
 <div class="mx-auto mt-2 flex">
     <?php
     include insertComponent("admin/sidebar.php");
@@ -31,8 +31,21 @@ include insertComponent("admin/header.php");
                             <option value="n4" <?php if ($post["section"] == "n4"): ?> selected <?php endif; ?>>n4
                             </option>
                         </select>
+                        <input type="text" id="newCategory"
+                            class="bg-slate-300 px-2 outline-none rounded-md border border-black placeholder:text-black placeholder:text-opacity-30"
+                            placeholder="nova categoria" />
+                        <button type="button" id="btnAddCategory"
+                            class="bg-slate-400 hover:bg-red-400 rounded-lg text-white py-1">Adicionar
+                            Categoria</button>
+                        <select id="category" name="category" class="rounded-md border border-black mb-3">
+                            <?php foreach ($AllCategories as $cat): ?>
+                                <option value="<?= $cat["id"] ?>" <?php if ($cat["name"] == $post["category"]): ?> selected
+                                    <?php endif; ?>>
+                                    <?= $cat["name"] ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
                         <img id="oldImage" src=<?= insertAdminImage($post["image"]) ?> alt=<?= $post["image"] ?> />
-
                         <div id="previewImage"></div>
                         <button id="openDialogSelectImage" type="button"
                             class="bg-black rounded-lg text-white py-1 max-[768px]:mb-5">Selecione uma

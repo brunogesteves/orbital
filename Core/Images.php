@@ -23,7 +23,7 @@ class Images
         return $db->findAll("select * from images");
     }
 
-    public function uploadImage($source, $files = [],)
+    public function uploadImage($source, $files = [])
     {
         $db = $this->connection;
 

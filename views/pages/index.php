@@ -1,22 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include insertComponent("header.php");
+?>
+<main class="min-[768px]:max-w-screen-2xl mx-auto">
+    <section
+        class="mx-auto w-full flex justify-between items-start max-[767px]:flex-col max-sm:mt-2 max-sm:gap-y-2 max-[425px]:h-auto min-[426px]:h-auto min-[768px]:h-[560px] mt-2">
+        <?php
+        include insertComponent("home/level1.php");
+        include insertComponent("home/level2.php");
+        ?>
+    </section>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src=<?= insertScript("tailwind.js") ?>></script>
-    <link rel="shortcut icon" href=<?= insertAdminImage("orbital/logo.ico") ?> type="image/x-icon" />
-    <title>Orbital Channel</title>
-</head>
-
-<body>
-    <main class="min-[768px]:max-w-screen-2xl mx-auto h-screen flex justify-center items-center">
-        <div class="flex justify-center flex-col">
-            <div class="flex justify-center">
-                <img src=<?= insertImage("orbital/logo.png") ?> alt="logotype" class="w-96" />
-            </div>
-        </div>
-    </main>
-</body>
-
-</html>
+    <section class="mx-auto flex justify-center w-full h-auto max-[767px]:flex-col mt-3 ">
+        <?php
+        include insertComponent("home/level3.php");
+        include insertComponent("home/level4.php");
+        ?>
+    </section>
+</main>
+<?php
+include insertComponent("footer.php");
+?>

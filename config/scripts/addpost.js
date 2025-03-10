@@ -119,7 +119,6 @@ $(document).ready(() => {
       cache: false,
       processData: false,
       success: function (data) {
-        console.log(data);
         $(".allimages").prepend(data);
         $(".selectImage").click(function () {
           var selectImage = $(".selectImage");
@@ -133,6 +132,30 @@ $(document).ready(() => {
           document.getElementById("dialogChooseImage").close();
           $("#image_id").val(id);
         });
+      },
+      error: function (res) {
+        alert("error");
+      },
+    });
+  });
+
+  $("#btnAddCategory").on("click", function () {
+    var newCategory = $("#newCategory").val();
+    console.log(newCategory);
+
+    var formData = new FormData();
+    formData.append("newCategory", newCategory);
+
+    $.ajax({
+      type: "POST",
+      url: "/Core/Category.php",
+      data: formData,
+      contentType: false,
+      cache: false,
+      processData: false,
+      success: function (data) {
+        $("#category").find("option:nth-child(1)").after(data);
+        $("#newCategory").val("");
       },
       error: function (res) {
         alert("error");

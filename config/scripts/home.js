@@ -23,16 +23,12 @@ $(document).ready(() => {
     $("#completeArticleFront").show();
   });
 
-  $("#menu_mobile_open").on("click", function () {
-    $(".ui.sidebar").sidebar("toggle");
-  });
-
   $("#openMenuMobile").on("click", function () {
-    $(".sidebar").removeClass("hidden");
+    $(".sidebar").removeClass("left-[-100%]");
   });
 
   $("#closeMenuMobile").on("click", function () {
-    $(".sidebar").addClass("hidden");
+    $(".sidebar").addClass("left-[-100%]");
   });
 
   $(window).on("resize", () => {

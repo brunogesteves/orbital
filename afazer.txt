@@ -1,0 +1,23 @@
+
+testar api rnphp crud
+testar api rnphp criar e apagar images
+
+
+
+
+ 
+
+
+ 
+
+
+
+
+ limitar acoes do ctc - verificar onde o ctc possa usar
+ 
+
+ciar cronjob
+api da temperatura
+criar ads e puxar ad na home -aumentar tempo final do auncio para aparecer header
+
+

@@ -11,7 +11,4 @@ $_SESSION["warningAcess"] = "";
 $formErrors = $_SESSION["formErrors"];
 $warningAcess = $_SESSION["warningAcess"];
 
-require view("login.php", [
-    "formErrors" => $formErrors,
-    "warningAcess" => $warningAcess
-]);
+require view("login.php");

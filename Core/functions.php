@@ -63,7 +63,9 @@ function login($user)
         "email" => $user["email"],
         "name" => ucwords($user["name"]),
         "userID" => $user["userID"],
-        "role" => $user["role"]
+        "role" => $user["role"],
+        "checkInTime" => $user["checkInTime"]
+
     ];
 
     // session_regenerate_id(true);

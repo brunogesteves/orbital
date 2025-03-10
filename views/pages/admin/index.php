@@ -1,7 +1,7 @@
 <?php
 include insertComponent("admin/header.php");
 ?>
-<div id="size"></div>
+<!-- <div id="size"></div> -->
 <div class="mx-auto mt-2 flex">
     <?php
     include insertComponent("admin/sidebar.php");
@@ -58,7 +58,7 @@ include insertComponent("admin/header.php");
             <?php include_once insertComponent("admin/home/level4.php") ?>
         </div>
         <div id="tab5" class=" tab-content bg-white shadow-md rounded-lg h-[calc(100vh_-_303px)] overflow-y-auto">
-            <?php include_once insertComponent("admin/home/online.php") ?>
+            <?php include_once insertComponent("admin/home/allPosts.php") ?>
         </div>
 
     </main>

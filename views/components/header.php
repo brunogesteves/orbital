@@ -56,24 +56,33 @@
         </div>
         <div class="text-center h-[150px] w-5/6 max-[768px]:w-full  max-[768px]:bg-black">
             <?php foreach ($adsFront as $ad) : ?>
-                <a href=<?= $ad['link'] ?> class="max-[768px]:hidden max-[768px]:bg-red-500">
-                    <div class="relative">
-                        <!-- <img src=<?= "/ads/$ad[file]" ?> alt="" class="object-cover object-center h-44 w-full"> -->
-                        <img src=<?= "public/images/ads/er.png" ?> alt=""
-                            class="object-scale-down object-center h-[150px] w-full">
-                    </div>
-                </a>
+            <a href=<?= $ad['link'] ?> class="max-[768px]:hidden max-[768px]:bg-red-500">
+                <div class="relative">
+                    <!-- <img src=<?= "/ads/$ad[file]" ?> alt="" class="object-cover object-center h-44 w-full"> -->
+                    <img src=<?= "public/images/ads/er.png" ?> alt=""
+                        class="object-scale-down object-center h-[150px] w-full">
+                </div>
+            </a>
             <?php endforeach; ?>
             <?php foreach ($adsFront as $ad) : ?>
-                <a href=<?= $ad['link'] ?> class="min-[768px]:hidden bg-black h-[150px]">
-                    <div class="relative overflow-hidden">
-                        <!-- <img src=<?= "/ads/$ad[file]" ?> alt="" class="object-cover object-center h-44 w-full"> -->
-                        <img src=<?= "public/images/ads/mobile.png" ?> alt=""
-                            class="object-scale-down object-center h-[150px] w-full ">
-                    </div>
-                </a>
+            <a href=<?= $ad['link'] ?> class="min-[768px]:hidden bg-black h-[150px]">
+                <div class="relative overflow-hidden">
+                    <!-- <img src=<?= "/ads/$ad[file]" ?> alt="" class="object-cover object-center h-44 w-full"> -->
+                    <img src=<?= "public/images/ads/mobile.png" ?> alt=""
+                        class="object-scale-down object-center h-[150px] w-full ">
+                </div>
+            </a>
             <?php endforeach; ?>
         </div>
     </header>
+    <div class="flex justify-start">
+        <?php
+        foreach ($categories as $cat) : ?>
+        <h1 class="cursor-pointer p-2 text-black rounded-md mt-1 uppercase">
+            <?= $cat["name"] ?>
+        </h1>
+        <?php endforeach; ?>
+
+    </div>
 
     <?php include_once insertComponent("mobileSidebar.php") ?>

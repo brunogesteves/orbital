@@ -14,7 +14,9 @@
                 Adicionar Anúncios</a>
         </div>
     </div>
-
+    <div class="w-3/4 cursor-pointer group">
+        <a href="/admin/categorias">Categorias</a>
+    </div>
     <div class="w-3/4 cursor-pointer">
         <a href="/admin/procurar">
             Procurar

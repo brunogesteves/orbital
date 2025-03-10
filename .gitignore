@@ -1,5 +1,6 @@
 /vendor/
 .env
+.afazer.txt
 .views/pages/index2.php
 .htaccess
 .vscode/

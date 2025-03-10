@@ -26,8 +26,12 @@ $router->delete("/admin/ads/destroy", "Controllers/Admin/ads/destroy.php")->only
 $router->get("/admin/imagens", "Controllers/Admin/images/index.php")->only("auth");
 $router->post("/admin/images/create", "Controllers/Admin/images/create.php")->only("auth");
 $router->delete("/admin/images/destroy", "Controllers/Admin/images/destroy.php")->only("auth");
-
 $router->put("/admin/images/updatelogotype", "Controllers/Admin/images/updatelogotype.php");
+
+$router->get("/admin/categorias", "Controllers/Admin/categories/index.php")->only("auth");
+$router->post("/admin/categories/create", "Controllers/Admin/categories/create.php")->only("auth");
+$router->delete("/admin/categories/destroy", "Controllers/Admin/categories/destroy.php")->only("auth");
+
 
 $router->get("/404", "Controllers//abort.php");
 

@@ -53,8 +53,7 @@
                 <img src=<?= insertAdminImage("icons/menu.svg") ?> class="size-10" />
             </button>
             <form method="POST" action="/session/destroy">
-
-                <span><?= $_SESSION["user"]["name"] ?>, você esta logado</span>
+                <span><?= $_SESSION["user"]["name"] ?> </span>
                 <button type="submit" name="_method" value="DELETE"
                     class="cursor-pointer ml-5 text-xl bg-black text-white w-20 text-center rounded-md">
                     Sair</button>

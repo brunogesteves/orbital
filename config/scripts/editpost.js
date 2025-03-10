@@ -146,4 +146,28 @@ $(document).ready(() => {
       },
     });
   });
+
+  $("#btnAddCategory").on("click", function () {
+    var newCategory = $("#newCategory").val();
+    console.log(newCategory);
+
+    var formData = new FormData();
+    formData.append("newCategory", newCategory);
+
+    $.ajax({
+      type: "POST",
+      url: "/Core/Category.php",
+      data: formData,
+      contentType: false,
+      cache: false,
+      processData: false,
+      success: function (data) {
+        $("#category").find("option:nth-child(1)").after(data);
+        $("#newCategory").val("");
+      },
+      error: function (res) {
+        alert("error");
+      },
+    });
+  });
 });

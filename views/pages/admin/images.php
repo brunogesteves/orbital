@@ -3,7 +3,7 @@ include insertComponent("admin/header.php");
 
 ?>
 
-<div id="size"></div>
+<!-- <div id="size"></div> -->
 <div class="mx-auto mt-2 flex">
     <?php
     include insertComponent("admin/sidebar.php");
@@ -23,23 +23,23 @@ include insertComponent("admin/header.php");
             <div class="flex  justify-start items-start min-[768px]:h-[calc(100vh_-_391px)] flex-wrap overflow-y-auto">
                 <?php
                 foreach ($allImages as $image) : ?>
-                    <div class="cursor-pointer w-1/4 max-[768px]:w-full p-1 h-auto relative">
-                        <img src=<?= insertAdminImage($image["name"]) ?> alt=<?= $image["name"] ?>
-                            class="w-full object-scale-down max-h-full m-auto " />
-                        <form method="post" action="images/destroy" class="w-full h-full bg-green-500 ">
-                            <input type="hidden" name="imageId" value=<?= $image["id"] ?> />
-                            <input type="hidden" name="imageName" value=<?= $image["name"] ?> />
-                            <div class="openDialogSeeImage" class="" data-value="azeite.jpg">
-                                <img src=<?= insertAdminImage("icons/see.jpg")  ?> alt="see"
-                                    class="w-10 absolute top-2 left-2" />
-                            </div>
-                            <button type="submit" name="_method" value="DELETE" class="absolute top-2 right-2">
-                                <img src=<?= insertAdminImage("icons/trash.png")  ?> alt="<?= $image["name"] ?>"
-                                    class="w-7" />
-                            </button>
+                <div class="cursor-pointer w-1/4 max-[768px]:w-full p-1 h-auto relative">
+                    <img src=<?= insertAdminImage($image["name"]) ?> alt=<?= $image["name"] ?>
+                        class="w-full object-scale-down max-h-full m-auto " />
+                    <form method="post" action="images/destroy" class="w-full h-full bg-green-500 ">
+                        <input type="hidden" name="imageId" value=<?= $image["id"] ?> />
+                        <input type="hidden" name="imageName" value=<?= $image["name"] ?> />
+                        <div class="openDialogSeeImage" class="" data-value="<?= $image["name"] ?>">
+                            <img src=<?= insertAdminImage("icons/see.jpg")  ?> alt="see"
+                                class="w-10 absolute top-2 left-2" />
+                        </div>
+                        <button type="submit" name="_method" value="DELETE" class="absolute top-2 right-2">
+                            <img src=<?= insertAdminImage("icons/trash.png")  ?> alt="<?= $image["name"] ?>"
+                                class="w-7" />
+                        </button>
 
-                        </form>
-                    </div>
+                    </form>
+                </div>
                 <?php endforeach; ?>
             </div>
             <div class="ui modal modalImage">

@@ -75,4 +75,32 @@ class Database
 
         return self::query($query, $params);
     }
+
+    public function loginUser($time, $userId)
+    {
+        return self::query(
+            'INSERT INTO checkInOutTimes(login, logout, user_id) VALUES(:login, :logout, :user_id)',
+            [
+                "login" => $time,
+                "logout" => 0,
+                "user_id" => $userId
+            ]
+        );
+    }
+
+    public function logoutUser($time, $checkInTime)
+    {
+        return self::query(
+            "UPDATE checkInOutTimes SET logout = $time WHERE login = $checkInTime"
+
+        );
+    }
+
+    public function statusUser($userStatus, $email)
+    {
+        return self::query(
+            "UPDATE users SET status = '$userStatus' WHERE email = '$email'"
+
+        );
+    }
 }

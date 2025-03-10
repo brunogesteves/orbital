@@ -16,7 +16,7 @@ $(document).ready(function () {
 
   $(".openDialogSeeImage").on("click", function (e) {
     var index = $(".openDialogSeeImage").index(this);
-    var fileName = $(".openDialogSeeImage").data("value");
+    var fileName = $(".openDialogSeeImage").eq(index).data("value");
 
     $("#watchTheImage").html(
       `<img src='../../public/images/${fileName}' alt='logo'   />`

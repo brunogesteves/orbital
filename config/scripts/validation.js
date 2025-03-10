@@ -20,9 +20,10 @@ $(document).ready(() => {
         maxlength: 60,
       },
       post_at: "required",
-      image_id: "required",
+      category: "required",
       content: "required",
       section: "required",
+      category: "required",
     },
     messages: {
       title:
@@ -31,6 +32,7 @@ $(document).ready(() => {
       image_id: "<p class='text-red-500'>Escolha uma thumb</p>",
       content: "<p class='text-red-500'>Conteúdo Obrigatório</p>",
       section: "<p class='text-red-500'>Escolha uma Posição</p>",
+      category: "<p class='text-red-500'>Escolha uma categoria</p>",
     },
     submitHandler: function (form) {
       form.submit();
@@ -77,6 +79,20 @@ $(document).ready(() => {
     messages: {
       email: "<p class='text-red-500'>Escolha um título</p>",
       password: "<p class='text-red-500'>Digite o link</p>",
+    },
+    submitHandler: function (form) {
+      form.submit();
+    },
+  });
+
+  $("#newImageForm").validate({
+    ignore: "",
+    rules: {
+      fileImageUpload: "required",
+    },
+
+    messages: {
+      fileImageUpload: "<p class='text-red-500'>Escolha uma Imagem</p>",
     },
     submitHandler: function (form) {
       form.submit();
