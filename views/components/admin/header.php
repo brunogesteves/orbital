@@ -28,22 +28,16 @@
 <body class="font-sans antialiased ">
     <header
         class="flex justify-between items-center h-[200px]  max-[768px]:h-auto max-[768px]:flex-col max-[768px]:gap-y-3 max-[768px]:mb-10">
-        <?php /* if ($_SESSION["user"]["role"] == "dir"): */ ?>
-        <div id="openModalLogotype"
-            class="flex justify-center items-center w-1/3 max-[768px]:w-full h-full overflow-hidden relative hover:opacity-70  cursor-pointer">
+        <div class="flex justify-center items-center w-1/3 max-[768px]:w-full h-full overflow-hidden relative">
             <img src=<?= insertAdminImage("orbital/logo.png") ?> alt="logo"
                 class="h-full w-full object-scale-down flex-none max-[768px]:size-20" />
-            <span
-                class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl text-white  bg-black rounded-lg px-2">
-                Mudar Logotipo </span>
+            <?php if ($_SESSION["user"]["role"] == "dir"):  ?>
+                <button id="openModalLogotype"
+                    class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl text-white  bg-black rounded-lg px-2">
+                    Mudar Logotipo </button>
+            <?php endif; ?>
         </div>
-        <?php /*endif;*/ ?>
-        <?php /* if ($_SESSION["user"]["role"] == "dir"): */ ?>
-        <!-- <div class="flex justify-center items-center w-1/3 max-[768px]:w-full h-full overflow-hidden  ">
-            <img src=<?= insertAdminImage("orbital/logo.png") ?> alt="logo"
-                class="h-full w-full object-scale-down flex-none max-[768px]:size-20" />
-        </div> -->
-        <?php /*endif;*/ ?>
+
 
         <div id="timestamp"
             class="flex justify-center items-center w-1/3 max-[768px]:w-full h-full text-5xl max-[768px]:text-2xl min-[768px]:w-fullfont-bold">
@@ -60,7 +54,7 @@
             </form>
         </div>
     </header>
-    <dialog id="dialogLogotype" class="w-[95%] max-[768px]:h-[70%] h-[95%] bg-blue-500 fixed ">
+    <dialog class="w-[95%] max-[768px]:h-[70%] h-[95%] bg-blue-500 fixed ">
         <form id="updateLogotypeForm" method="POST" action="/admin/images/updatelogotype" enctype="multipart/form-data"
             class="pt-10 flex flex-col justify-start max-[768px]:justify-start items-center">
             <input type="file" name="newLogotypeImage" id="newLogotypeImage" required accept=".png"

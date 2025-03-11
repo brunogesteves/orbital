@@ -62,7 +62,7 @@ function login($user)
     $_SESSION["user"] = [
         "email" => $user["email"],
         "name" => ucwords($user["name"]),
-        "userID" => $user["userID"],
+        "userID" =>  $user["userID"],
         "role" => $user["role"],
         "checkInTime" => $user["checkInTime"]
 

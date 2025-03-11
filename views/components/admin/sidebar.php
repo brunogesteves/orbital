@@ -7,6 +7,7 @@
                 Adicionar Post</a>
         </div>
     </div>
+    <?php if ($_SESSION["user"]["role"] == "dir"):  ?>
     <div class="w-3/4 cursor-pointer group">
         <a href="/admin/ads">Anúncios</a>
         <div class="hidden group-hover:block pl-3 mt-3 cursor-pointer">
@@ -14,6 +15,7 @@
                 Adicionar Anúncios</a>
         </div>
     </div>
+    <?php endif; ?>
     <div class="w-3/4 cursor-pointer group">
         <a href="/admin/categorias">Categorias</a>
     </div>

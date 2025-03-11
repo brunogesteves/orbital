@@ -19,7 +19,7 @@ if ($user) {
         login([
             "email" => $email,
             "name" => $user["name"],
-            "userID" => $user["id"],
+            "userID" =>  $user["id"],
             "role" => $user["role"],
             "checkInTime" => $time
         ]);

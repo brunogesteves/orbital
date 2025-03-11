@@ -77,8 +77,8 @@ $(document).ready(() => {
     },
 
     messages: {
-      email: "<p class='text-red-500'>Escolha um título</p>",
-      password: "<p class='text-red-500'>Digite o link</p>",
+      email: "<p class='text-red-500'>Digite o email</p>",
+      password: "<p class='text-red-500'>Digite a senha</p>",
     },
     submitHandler: function (form) {
       form.submit();

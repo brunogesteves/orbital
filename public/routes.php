@@ -13,7 +13,7 @@ $router->delete("/admin/post/destroy", "Controllers/Admin/destroy.php")->only("a
 
 
 $router->get("/admin/procurar", "Controllers/Admin/search/index.php")->only("auth");
-$router->post("/admin/search/search", "Controllers/Admin/search/search.php")->only("auth");
+$router->post("/admin/search/makesearch", "Controllers/Admin/search/makeSearch.php")->only("auth");
 
 $router->get("/admin/ads", "Controllers/Admin/ads/index.php")->only("auth");
 $router->get("/admin/novoad", "Controllers/Admin/ads/newAd.php")->only("auth");

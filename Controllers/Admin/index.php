@@ -1,22 +1,15 @@
 <?php
 
 use Core\Database;
-// use Core\Users;
+
 
 $db = new Database();
-// $getUsers = new Users();
-// date_default_timezone_set('America/Sao_Paulo');
 
-// $author = $_SESSION["user"]["userID"];
-// $role = $_SESSION["user"]["role"];
+$userID = (int) $_SESSION["user"]["userID"];
 
-// $users = $getUsers->allUsers();
-// $originalPosts = $role == "dir"
-//     ? $db->findAll("SELECT p.*, i.name as image, u.name as authorName FROM posts p INNER JOIN images i ON i.id = p.image_id INNER JOIN users u ON u.id = p.author_id  ORDER BY p.post_at asc")
-//     : $db->findAll("SELECT p.*, i.name as image FROM posts p INNER JOIN images i ON i.id = p.image_id WHERE p.author_id = $author  ORDER BY p.post_at asc");
-
-
-$allPosts = $db->findAll("SELECT p.*, i.name as image, u.name as authorName FROM posts p INNER JOIN images i ON i.id = p.image_id INNER JOIN users u ON u.id = p.author_id  ORDER BY p.post_at asc");
+$allPosts = $_SESSION["user"]["role"] == "dir"
+    ? $db->findAll("SELECT p.*, i.name as image, u.name as authorName FROM posts p INNER JOIN images i ON i.id = p.image_id INNER JOIN users u ON u.id = p.author_id  ORDER BY p.post_at asc")
+    : $db->findAll("SELECT p.*, i.name as image, u.name as authorName FROM posts p INNER JOIN images i ON i.id = p.image_id INNER JOIN users u ON u.id = p.author_id WHERE p.author_id = $userID ORDER BY p.post_at asc");
 
 
 $level1 = [];

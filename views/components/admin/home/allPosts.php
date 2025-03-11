@@ -18,6 +18,7 @@
             class="bg-black hover:bg-red-700 px-3 py-1 rounded font-bold text-white m-3 absolute bottom-0 right-0 ">
             Editar
         </a>
+        <?php if ($_SESSION["user"]["role"] == "dir"):  ?>
         <form method="POST" action="/admin/post/publish"
             class="bg-black hover:bg-red-700 px-3 py-1 rounded text-white m-3 absolute bottom-10 right-0">
             <input type="hidden" name="postId" value=<?= $post['id'] ?> />
@@ -27,6 +28,7 @@
                 <?= $post["status"] == "on" ? "Despublicar" : "Publicar" ?>
             </button>
         </form>
+        <?php endif; ?>
 
         <?php if ($post["status"] !== "on"): ?>
         <form method="POST" action="/admin/post/destroy" class="flex items-center absolute top-2 right-2">
