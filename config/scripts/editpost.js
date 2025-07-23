@@ -124,8 +124,8 @@ $(document).ready(() => {
       cache: false,
       processData: false,
       success: function (data) {
-        console.log(data);
         $(".allimages").prepend(data);
+        $("#previewInputImage").empty();
         $(".selectImage").click(function () {
           var selectImage = $(".selectImage");
           var index = $(".selectImage").index(this);
@@ -147,27 +147,18 @@ $(document).ready(() => {
     });
   });
 
-  $("#btnAddCategory").on("click", function () {
-    var newCategory = $("#newCategory").val();
-    console.log(newCategory);
+  const dialog = document.getElementById("dialogChooseImage");
 
-    var formData = new FormData();
-    formData.append("newCategory", newCategory);
+  dialog.addEventListener("click", (event) => {
+    const rect = dialog.getBoundingClientRect();
+    const isClickOutside =
+      event.clientX < rect.left ||
+      event.clientX > rect.right ||
+      event.clientY < rect.top ||
+      event.clientY > rect.bottom;
 
-    $.ajax({
-      type: "POST",
-      url: "/Core/Category.php",
-      data: formData,
-      contentType: false,
-      cache: false,
-      processData: false,
-      success: function (data) {
-        $("#category").find("option:nth-child(1)").after(data);
-        $("#newCategory").val("");
-      },
-      error: function (res) {
-        alert("error");
-      },
-    });
+    if (isClickOutside) {
+      dialog.close();
+    }
   });
 });

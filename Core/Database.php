@@ -76,25 +76,25 @@ class Database
         return self::query($query, $params);
     }
 
-    public function loginUser($time, $userId)
+    public function logs($time, $userId)
     {
         return self::query(
-            'INSERT INTO checkInOutTimes(login, logout, user_id) VALUES(:login, :logout, :user_id)',
+            'INSERT INTO access_logs(login_at, logout_at, user_id) VALUES(:login_at, :logout_at, :user_id)',
             [
-                "login" => $time,
-                "logout" => 0,
+                "login_at" => $time,
+                "logout_at" => 0,
                 "user_id" => $userId
             ]
         );
     }
 
-    public function logoutUser($time, $checkInTime)
-    {
-        return self::query(
-            "UPDATE checkInOutTimes SET logout = $time WHERE login = $checkInTime"
+    // public function logoutUser($time, $checkInTime)
+    // {
+    //     return self::query(
+    //         "UPDATE access_logs SET logout_at = $time WHERE login = $checkInTime"
 
-        );
-    }
+    //     );
+    // }
 
     public function statusUser($userStatus, $email)
     {

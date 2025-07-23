@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-
-// $_SESSION["user"] = [];
+// $_SESSION["results"] = [];
+// $_SESSION["warningAcess"] = "";
 function base_path($path)
 {
     return BASE_PATH . $path;
@@ -64,7 +64,6 @@ function login($user)
         "name" => ucwords($user["name"]),
         "userID" =>  $user["userID"],
         "role" => $user["role"],
-        "checkInTime" => $user["checkInTime"]
 
     ];
 

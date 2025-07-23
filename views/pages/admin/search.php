@@ -2,7 +2,6 @@
 include insertComponent("admin/header.php");
 ?>
 
-<!-- <div id="size"></div> -->
 <div class="mx-auto mt-2 flex">
     <?php
     include insertComponent("admin/sidebar.php");

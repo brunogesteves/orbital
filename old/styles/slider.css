@@ -1,0 +1,61 @@
+.carousel-container-computer,
+.carousel-container-adMobile,
+.carousel-container-adfront,
+.carousel-container-adSlide,
+.carousel-container-adTablet {
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carousel-computer,
+.carousel-mobile,
+.carousel-adfront,
+.carousel-adSlide,
+.carousel-adTablet {
+  display: flex;
+  transition: transform 1s ease;
+}
+
+.carousel-slide-computer,
+.carousel-slide-mobile,
+.carousel-slide-adfront,
+.carousel-slide-adSlide,
+.carousel-slide-adTablet {
+  flex: 0 0 100%;
+}
+
+img {
+  object-fit: cover;
+}
+
+.headline {
+  margin-top: 100px;
+  height: 150px;
+  padding-top: 80px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+}
+
+.headlineMobile {
+  margin-top: 120px;
+  height: 200px;
+  padding-top: 100px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+}
+
+#grad1 {
+  height: 1px;
+  background-color: #e6e6e6;
+  width: 4em;
+  margin: 0 auto;
+  transform: rotate(90deg);
+  background-image: linear-gradient(left, white 2%, #e6e6e6 50%, white 98%);
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    right bottom,
+    color-stop(0.02, white),
+    color-stop(0.5, gray),
+    color-stop(0.98, white)
+  );
+}

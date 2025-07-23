@@ -32,15 +32,24 @@ class Images
         $target = $source == "post" ? "../public/images/" . $fileName : "public/images/" . $fileName;
 
         if (file_exists($target)) {
+
             $separateFilename = explode('.', $target);
             $ext = $separateFilename[1];
             $target = $separateFilename[0] . "(1)." . $ext;
-        }
 
-        if (move_uploaded_file($tempName, $target)) {
-            $db->insert('INSERT INTO images(name) VALUES(:fileName)', [
-                "fileName" => $fileName
-            ]);
+            if (move_uploaded_file($tempName, $target)) {
+                $db->insert('INSERT INTO images(name, file) VALUES(:name, :file)', [
+                    "name" => explode(".", string: $fileName)[0],
+                    "file" => $fileName
+                ]);
+            }
+        } else {
+            if (move_uploaded_file($tempName, $target)) {
+                $db->insert('INSERT INTO images(name, file) VALUES(:name, :file)', [
+                    "name" => explode(".", string: $fileName)[0],
+                    "file" => $fileName
+                ]);
+            }
         }
     }
 

@@ -6,11 +6,11 @@ $db = new Database();
 date_default_timezone_set('America/Sao_Paulo');
 
 $timeNow = strtotime(date('m/d/Y h:i:s a', time()));
-$posts = $db->findAll("SELECT p.*, i.name as image FROM posts p INNER JOIN images i ON i.id = p.image_id WHERE p.status = 'on' ORDER BY p.post_at asc");
-$categories = $db->findAll("SELECT * FROM categories  ORDER BY name ASC");
+$posts = $db->findAll("SELECT p.*, i.name as image FROM post p INNER JOIN image i ON i.id = p.image_id WHERE p.status = 'on' ORDER BY p.post_at asc");
+$categories = $db->findAll("SELECT * FROM category  ORDER BY name ASC");
 
-$adsFront = $db->findAll("SELECT link, file FROM ads WHERE position='top' AND (starts_at <= $timeNow AND finishs_at >= $timeNow) AND status= 'on'");
-$adsMobile = $db->findAll("SELECT link, file FROM ads WHERE position='mobile' AND (starts_at <= $timeNow AND finishs_at >= $timeNow) AND status= 'on'");
+$adsFront = $db->findAll("SELECT link, file FROM ad WHERE position='top' AND (starts_at <= $timeNow AND finishs_at >= $timeNow) AND status= 'on'");
+$adsMobile = $db->findAll("SELECT link, file FROM ad WHERE position='mobile' AND (starts_at <= $timeNow AND finishs_at >= $timeNow) AND status= 'on'");
 
 $level1 = [];
 $level2 = [];
@@ -33,4 +33,4 @@ for ($x = 0; $x < sizeof($posts); $x++) {
 }
 
 
-require view("index.php");
+require view("home.php");

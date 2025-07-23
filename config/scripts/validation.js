@@ -24,6 +24,7 @@ $(document).ready(() => {
       content: "required",
       section: "required",
       category: "required",
+      image_id: "required",
     },
     messages: {
       title:
@@ -86,6 +87,20 @@ $(document).ready(() => {
   });
 
   $("#newImageForm").validate({
+    ignore: "",
+    rules: {
+      fileImageUpload: "required",
+    },
+
+    messages: {
+      fileImageUpload: "<p class='text-red-500'>Escolha uma Imagem</p>",
+    },
+    submitHandler: function (form) {
+      form.submit();
+    },
+  });
+
+  $("#newThumbForm").validate({
     ignore: "",
     rules: {
       fileImageUpload: "required",

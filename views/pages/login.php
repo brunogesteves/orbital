@@ -25,7 +25,7 @@
                 <input id="email" class="border-2 border-black rounded-md pl-3" autocomplete="off" type="email"
                     name="email" placeholder="Digite o Email" value="n3586@hotmail.com" />
                 <input id="password" class="border-2 border-black rounded-md pl-3" autocomplete="off" type="password"
-                    name="password" placeholder="Digite a senha" value="1234" />
+                    name="password" placeholder="Digite a senha" value="123" />
                 <button type="submit"
                     class="cursor-pointer text-xl bg-black text-white w-20 text-center my-3 rounded-md">Entrar</button>
                 <div class="text-red-500 font-bold"><?= $warningAcess ?></div>

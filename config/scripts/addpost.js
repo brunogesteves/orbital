@@ -106,60 +106,54 @@ $(document).ready(() => {
   });
 
   $("#submitNewImage").on("click", function () {
-    var fileInput = $("#fileImageUpload")[0];
+    if ($("#fileImageUpload")[0]) {
+      var fileInput = $("#fileImageUpload")[0];
 
-    var formData = new FormData();
-    formData.append("fileImageUpload", fileInput.files[0]);
+      var formData = new FormData();
+      formData.append("fileImageUpload", fileInput.files[0]);
 
-    $.ajax({
-      type: "POST",
-      url: "/Core/upload.php",
-      data: formData,
-      contentType: false,
-      cache: false,
-      processData: false,
-      success: function (data) {
-        $(".allimages").prepend(data);
-        $(".selectImage").click(function () {
-          var selectImage = $(".selectImage");
-          var index = $(".selectImage").index(this);
+      $.ajax({
+        type: "POST",
+        url: "/Core/upload.php",
+        data: formData,
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function (data) {
+          $(".allimages").prepend(data);
+          $("#previewInputImage").empty();
+          $(".selectImage").click(function () {
+            var selectImage = $(".selectImage");
+            var index = $(".selectImage").index(this);
 
-          var fileName = selectImage[index].getAttribute("data-image");
-          var id = selectImage[index].getAttribute("data-id");
-          $(".previewImage").html(
-            `<img src="../public/images/${fileName}" alt=${fileName} />`
-          );
-          document.getElementById("dialogChooseImage").close();
-          $("#image_id").val(id);
-        });
-      },
-      error: function (res) {
-        alert("error");
-      },
-    });
+            var fileName = selectImage[index].getAttribute("data-image");
+            var id = selectImage[index].getAttribute("data-id");
+            $(".previewImage").html(
+              `<img src="../public/images/${fileName}" alt=${fileName} />`
+            );
+            document.getElementById("dialogChooseImage").close();
+            $("#image_id").val(id);
+          });
+        },
+        error: function (res) {
+          alert("error");
+        },
+      });
+    }
   });
 
-  $("#btnAddCategory").on("click", function () {
-    var newCategory = $("#newCategory").val();
-    console.log(newCategory);
+  const dialog = document.getElementById("dialogChooseImage");
 
-    var formData = new FormData();
-    formData.append("newCategory", newCategory);
+  dialog.addEventListener("click", (event) => {
+    const rect = dialog.getBoundingClientRect();
+    const isClickOutside =
+      event.clientX < rect.left ||
+      event.clientX > rect.right ||
+      event.clientY < rect.top ||
+      event.clientY > rect.bottom;
 
-    $.ajax({
-      type: "POST",
-      url: "/Core/Category.php",
-      data: formData,
-      contentType: false,
-      cache: false,
-      processData: false,
-      success: function (data) {
-        $("#category").find("option:nth-child(1)").after(data);
-        $("#newCategory").val("");
-      },
-      error: function (res) {
-        alert("error");
-      },
-    });
+    if (isClickOutside) {
+      dialog.close();
+    }
   });
 });

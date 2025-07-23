@@ -1,6 +1,7 @@
 <?php
 
-$router->get("/", "Controllers/index.php");
+$router->get("/", "views/pages/index.php");
+$router->get("/home", "Controllers/index.php");
 $router->get("/admin", "Controllers/Admin/index.php")->only("auth");
 
 

@@ -1,4 +1,5 @@
 <?php
+
 require "public/index.php";
 
 spl_autoload_register(function ($class) {

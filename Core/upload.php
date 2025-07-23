@@ -8,15 +8,15 @@ $dotenv->load();
 
 use Core\Images;
 
-$db = new Images();
+$newImage = new Images();
 
-$db->uploadImage("post", $_FILES);
-$result = $db->getUniqueImage();
+$newImage->uploadImage("post", $_FILES);
+$result = $newImage->getUniqueImage();
 
 echo '      
-    <div data-image="' . $result['name'] . '" data-id="' . $result['id'] . '"
+    <div data-image="' . $result['file'] . '" data-id="' . $result['id'] . '"
      class="selectImage cursor-pointer w-1/4 max-[768px]:w-full p-1 h-auto relative group">
-         <img src="../public/images/' . $result['name'] . '" alt="' . $result['name'] . '" class="w-full
+         <img src="../public/images/' . $result['file'] . '" alt="' . $result['name'] . '" class="w-full
 object-scale-down max-h-full m-auto group-hover:opacity-50" />
                 <span class="absolute top-1/2 left-1/4 text-white text-6xl hidden group-hover:block">adicionar</span>
 

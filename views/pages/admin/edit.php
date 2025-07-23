@@ -14,6 +14,9 @@ include insertComponent("admin/header.php");
                 <form id="postform" method="post" action="/admin/post/update"
                     class="flex justify-between text-center px-5 w-full h-full pt-2">
                     <div class="flex justify-start flex-col w-full gap-y-5 ">
+                        <?php if ($_SESSION["user"]["role"] == "dir"):  ?>
+                            <p>Criador por: <?= $post["authorName"] ?></p>
+                        <?php endif; ?>
                         <button type="submit" name="_method" value="put"
                             class="bg-black rounded-lg text-white py-1">Atualizar</button>
                         <input type="text" name="title"
@@ -31,12 +34,7 @@ include insertComponent("admin/header.php");
                             <option value="n4" <?php if ($post["section"] == "n4"): ?> selected <?php endif; ?>>n4
                             </option>
                         </select>
-                        <input type="text" id="newCategory"
-                            class="bg-slate-300 px-2 outline-none rounded-md border border-black placeholder:text-black placeholder:text-opacity-30"
-                            placeholder="nova categoria" />
-                        <button type="button" id="btnAddCategory"
-                            class="bg-slate-400 hover:bg-red-400 rounded-lg text-white py-1">Adicionar
-                            Categoria</button>
+
                         <select id="category" name="category" class="rounded-md border border-black mb-3">
                             <?php foreach ($AllCategories as $cat): ?>
                                 <option value="<?= $cat["id"] ?>" <?php if ($cat["name"] == $post["category"]): ?> selected
@@ -45,7 +43,7 @@ include insertComponent("admin/header.php");
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <img id="oldImage" src=<?= insertAdminImage($post["image"]) ?> alt=<?= $post["image"] ?> />
+                        <img id="oldImage" src=<?= insertAdminImage($post["file"]) ?> alt=<?= $post["name"] ?> />
                         <div id="previewImage"></div>
                         <button id="openDialogSelectImage" type="button"
                             class="bg-black rounded-lg text-white py-1 max-[768px]:mb-5">Selecione uma

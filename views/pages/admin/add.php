@@ -26,16 +26,11 @@ include insertComponent("admin/header.php");
                             <option value="n3">n3</option>
                             <option value="n4">n4</option>
                         </select>
-                        <input type="text" id="newCategory"
-                            class="bg-slate-300 px-2 outline-none rounded-md border border-black placeholder:text-black placeholder:text-opacity-30"
-                            placeholder="nova categoria" />
-                        <button type="button" id="btnAddCategory"
-                            class="bg-slate-400 hover:bg-red-400 rounded-lg text-white py-1">Adicionar
-                            Categoria</button>
+
                         <select id="category" name="category" class="rounded-md border border-black mb-3">
                             <option value="">Escolha uma categoria</option>
                             <?php foreach ($AllCategories as $cat): ?>
-                                <option value="<?= $cat["name"] ?>"><?= $cat["name"] ?></option>
+                                <option value="<?= $cat["id"] ?>"><?= $cat["name"] ?></option>
                             <?php endforeach; ?>
                         </select>
                         <div class="previewImage"></div>
@@ -57,7 +52,7 @@ include insertComponent("admin/header.php");
     </main>
     <dialog id="dialogChooseImage" class="w-[95%] h-[90%] bg-blue-500 fixed pt-10">
         <div class="w-full flex justify-center items-center h-auto">
-            <form method="POST" action="images/create" enctype="multipart/form-data" class="flex flex-col">
+            <form id="newThumbForm" method="POST" enctype="multipart/form-data" class="flex flex-col">
                 <input type="file" name="fileImageUpload" id="fileImageUpload" accept=".jpg, .jpeg, .png" />
 
                 <div id="previewInputImage"> </div>
@@ -68,9 +63,9 @@ include insertComponent("admin/header.php");
         <div class="allimages flex justify-start items-start h-full   min-[768px]:h-[calc(100vh_-_391px)] flex-wrap ">
             <?php
             foreach ($allImages as $image) : ?>
-                <div data-image=<?= $image["name"] ?> data-id=<?= $image["id"] ?>
+                <div data-image=<?= $image["file"] ?> data-id=<?= $image["id"] ?>
                     class="selectImage cursor-pointer w-1/4 max-[768px]:w-full p-1 h-auto relative group">
-                    <img src=<?= insertAdminImage($image["name"]) ?> alt=<?= $image["name"] ?>
+                    <img src=<?= insertAdminImage($image["file"]) ?> alt=<?= $image["name"] ?>
                         class="w-full object-scale-down max-h-full m-auto group-hover:opacity-50" />
                     <span class="absolute top-1/2 left-1/4 text-white text-6xl hidden group-hover:block">adicionar</span>
                 </div>
