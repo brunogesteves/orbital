@@ -8,12 +8,12 @@ include insertComponent("admin/header.php");
     ?>
     <main class="w-full max-[768px]:w-full h-full overflow-y-auto mb-5">
         <div
-            class="w-full  px-2 flex max-[768px]:flex-col justify-center items-start w-full min-[768px]:h-[calc(100vh_-_261px)] overflow-y-auto ">
+            class="w-full  px-2 flex max-[768px]:flex-col justify-center items-start min-[768px]:h-[calc(100vh_-_261px)] overflow-y-auto ">
             <form method="post" action="/admin/ads/update" enctype="multipart/form-data"
                 class="flex justify-center items-center flex-col gap-y-5 w-auto max-[768px]:w-full bg">
                 <div class="w-full">
                     <p class="text-black text-xl">Título:</p>
-                    <input type="text" placeholder="título" value="<?= $ad["name"] ?>" disabled
+                    <input type="text" placeholder="título" value="<?= $ad["title"] ?>" disabled
                         class="w-full rounded-lg focus:outline pl-2 placeholder:text-black border-[1px] border-black text-xl" />
 
                 </div>
@@ -46,30 +46,28 @@ include insertComponent("admin/header.php");
                 <div class="w-full text-center text-black">
                     <p class="text-black text-xl">foto:</p>
                     <input type="file" id="adFileUpload" name="image" accept="image/*">
-                    <img id="oldImage" src=<?= insertAdminImage("ads/" . $ad['file']) ?> alt=<?= $ad["file"] ?> />
+                    <img id="oldImage" src=<?= insertAdminImage("ads/" . $ad['image']) ?> alt=<?= $ad["image"] ?> />
                     <div id="previewInputAdImage"></div>
 
                 </div>
                 <div class="w-full flex justify-between gap-x-5 max-[768px]:flex-col max-[768px]:gap-y-5">
                     <div class="w-full">
-                        <p class="text-black text-xl">Começa em:</p>
+                        <p class="text-black text-xl">Começa em: <?= $ad["startsAt"] ?> </p>
                         <input type="datetime-local" id="startsAt" name="startsAt" min="<?= $minTime ?>"
-                            class="w-full rounded-lg py-1 px-5 text-sm border-[1px] border-black" />
-
+                            class=" w-full rounded-lg py-1 px-5 text-sm border-[1px] border-black"
+                            value="<?= date('Y-m-d\TH:i', $ad["startsAt"]) ?>" />
                     </div>
                     <div class="w-full">
                         <p class="text-black text-xl">Termina em:</p>
                         <input type="datetime-local"
                             class="w-full rounded-lg py-1 px-5 text-sm border-[1px] border-black" id="endsAt"
-                            name="endsAt" min="<?= $minTime ?>" />
+                            name="endsAt" min="<?= $minTime ?>" value="<?= date('Y-m-d\TH:i', $ad["endsAt"]); ?>" />
 
                     </div>
                 </div>
                 <p id="clockWarning" class='text-red-500 hidden'>Horários errados</p>
-                <input type="hidden" id="oldStartsAt" value="<?= $ad["starts_at"] ?>" />
-                <input type="hidden" id="oldEndsAt" value="<?= $ad["finishs_at"] ?>" />
                 <input type="hidden" name="id" value="<?= $ad["id"] ?>" />
-                <input type="hidden" name="title" value="<?= $ad["name"] ?>" />
+                <input type="hidden" name="title" value="<?= $ad["title"] ?>" />
 
                 <div class="flex justify-center items-center w-full gap-x-10 max-[768px]:mb-10">
                     <div>

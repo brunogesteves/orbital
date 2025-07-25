@@ -8,9 +8,9 @@ $getImages = new Images();
 
 $images = $getImages->getImages();
 
-$topAds = $db->findAll("SELECT * FROM ads  WHERE position= 'top'  ORDER BY starts_at DESC");
-$mobileAds = $db->findAll("SELECT * FROM ads WHERE position= 'mobile'  ORDER BY starts_at DESC");
-$newsAds = $db->findAll("SELECT * FROM ads  WHERE position= 'news' ORDER BY starts_at DESC");
+$topAds = $db->findAll("SELECT * FROM ads  WHERE position= 'top'  ORDER BY startsAt DESC");
+$mobileAds = $db->findAll("SELECT * FROM ads WHERE position= 'mobile'  ORDER BY startsAt DESC");
+$newsAds = $db->findAll("SELECT * FROM ads  WHERE position= 'news' ORDER BY startsAt DESC");
 
 
 date_default_timezone_set('America/Sao_Paulo');

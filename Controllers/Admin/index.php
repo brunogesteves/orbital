@@ -8,16 +8,14 @@ $db = new Database();
 $userID = (int) $_SESSION["user"]["userID"];
 
 $allPosts = $_SESSION["user"]["role"] == "dir"
-    ? $db->findAll("SELECT p.*, i.name as image, u.name as authorName FROM posts p INNER JOIN images i ON i.id = p.image_id INNER JOIN users u ON u.id = p.author_id  ORDER BY p.post_at asc")
-    : $db->findAll("SELECT p.*, i.name as image, u.name as authorName FROM posts p INNER JOIN images i ON i.id = p.image_id INNER JOIN users u ON u.id = p.author_id WHERE p.author_id = $userID ORDER BY p.post_at asc");
+    ? $db->findAll("SELECT p.*, i.name, i.file, u.name as authorName FROM posts p INNER JOIN images i ON i.id = p.image_id INNER JOIN users u ON u.id = p.author_id  ORDER BY p.post_at asc")
+    : $db->findAll("SELECT p.*, i.name, i.file, u.name as authorName FROM posts p INNER JOIN images i ON i.id = p.image_id INNER JOIN users u ON u.id = p.author_id WHERE p.author_id = $userID ORDER BY p.post_at asc");
 
 
 $level1 = [];
 $level2 = [];
 $level3 = [];
 $level4 = [];
-
-
 
 for ($x = 0; $x < sizeof($allPosts); $x++) {
     if ($allPosts[$x]["status"] == "on") {

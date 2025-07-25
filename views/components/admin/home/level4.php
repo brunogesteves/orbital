@@ -9,7 +9,7 @@
 <div class="postsArea flex justify-start flex-wrap items-center h-auto w-full">
     <?php foreach ($level4 as $post): ?>
         <div class="w-1/4 max-[767px]:w-full h-full relative cursor-pointer p-1">
-            <img src=<?= insertImage($post["image"]) ?> class=" w-full  opacity-50 hover:opacity-80 " />
+            <img src=<?= insertImage($post["file"]) ?> class=" w-full  opacity-50 hover:opacity-80 " />
             <p class=" title absolute top-1 left-0 text-sm pl-3 shadow font-bold text-black">
                 título: <?= $post["title"] ?>
             </p>

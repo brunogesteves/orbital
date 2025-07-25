@@ -8,7 +8,7 @@ include insertComponent("admin/header.php");
     <?php
     include insertComponent("admin/sidebar.php");
     ?>
-    <main class="w-full max-[768px]:w-full h-full flex max-[768px]:flex-col justify-center items-start">
+    <main class="w-full max-[768px]:w-full h-full flex flex-col justify-center items-start">
         <div class="w-full flex justify-center items-center gap-x-5 max-[768px]:flex-col">
             <form id="newImageForm" method="POST" action="images/create" enctype="multipart/form-data"
                 class="flex flex-col">

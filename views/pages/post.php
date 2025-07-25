@@ -53,27 +53,6 @@
                     class="h-full focus:outline-none max-[768px]:size-12 mb-3 " />
             </a>
             <h1 class="min-[768px]:hidden text-white text-2xl font-bold ml-5">Orbital Channel</h1>
-
-        </div>
-        <div class="text-center h-[150px] w-5/6 max-[768px]:w-full  max-[768px]:bg-black">
-            <?php foreach ($adsFront as $ad) : ?>
-                <a href=<?= $ad['link'] ?> class="max-[768px]:hidden max-[768px]:bg-red-500">
-                    <div class="relative">
-                        <!-- <img src=<?= "/ads/$ad[file]" ?> alt="" class="object-cover object-center h-44 w-full"> -->
-                        <img src=<?= "public/images/ads/er.png" ?> alt=""
-                            class="object-scale-down object-center h-[150px] w-full">
-                    </div>
-                </a>
-            <?php endforeach; ?>
-            <?php foreach ($adsFront as $ad) : ?>
-                <a href=<?= $ad['link'] ?> class="min-[768px]:hidden bg-black h-[150px]">
-                    <div class="relative overflow-hidden">
-                        <!-- <img src=<?= "/ads/$ad[file]" ?> alt="" class="object-cover object-center h-44 w-full"> -->
-                        <img src=<?= insertImage("ads/mobile.png") ?> alt=""
-                            class="object-scale-down object-center h-[150px] w-full ">
-                    </div>
-                </a>
-            <?php endforeach; ?>
         </div>
 
     </header>

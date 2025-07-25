@@ -5,8 +5,8 @@ use Core\Database;
 $db = new Database();
 
 
-$id = $_POST["adId"];
-$file = $_POST["file"];
+$id = $_POST["id"];
+$file = $_POST["image"];
 
 $db->delete("DELETE FROM ads WHERE id=$id");
 $filename = "../../../public/images/ads" . $file;

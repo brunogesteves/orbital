@@ -6,20 +6,22 @@ $db = new Database();
 
 
 $id = (int) $_POST["id"];
-$name = $_POST["title"];
+$title = $_POST["title"];
+$position = $_POST["position"];
 $link = $_POST["link"];
 $status = $_POST["status"];
-$position = $_POST["position"];
-$starts_at = (int) $_POST["startsAt"];
-$endsAt = (int) $_POST["endsAt"];
+$endsAt = $_POST["endsAt"];
 
+$startsAt = strtotime(str_replace('T', ' ', $_POST["startsAt"]));
 
-$result = $db->update("UPDATE ads SET name='$name', 
+$endsAt = strtotime(str_replace('T', ' ', $_POST["endsAt"]));
+
+$result = $db->update("UPDATE ads SET title='$title', 
 position='$position',
-status='$status',
 link='$link',
-starts_at=$starts_at,
-finishs_at=$endsAt
+status='$status',
+startsAt=$startsAt,
+endsAt=$endsAt
 WHERE id=$id");
 
 
@@ -30,9 +32,9 @@ if ($result && (strlen($_FILES["image"]["name"])) > 0) {
 
     $separateFilename = explode('.', $fileName);
     $ext = $separateFilename[1];
-    $target = "public/images/ads/" . $name . "." . $ext;
+    $target = "public/images/ads/" . $title . "." . $ext;
 
-    $file = str_replace(" ", "-", $name . "." . $ext);
+    $file = str_replace(" ", "-", $title . "." . $ext);
     move_uploaded_file($tempName, $target);
 }
 

@@ -1,9 +1,6 @@
 <?php
 
-
-
 namespace Core;
-
 
 use Core\Database;
 
@@ -15,7 +12,6 @@ class Images
     {
         $this->connection = new Database();
     }
-
 
     public function getImages()
     {

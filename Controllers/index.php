@@ -7,10 +7,11 @@ date_default_timezone_set('America/Sao_Paulo');
 
 $timeNow = strtotime(date('m/d/Y h:i:s a', time()));
 $posts = $db->findAll("SELECT p.*, i.name as image FROM post p INNER JOIN image i ON i.id = p.image_id WHERE p.status = 'on' ORDER BY p.post_at asc");
+
 $categories = $db->findAll("SELECT * FROM category  ORDER BY name ASC");
 
-$adsFront = $db->findAll("SELECT link, file FROM ad WHERE position='top' AND (starts_at <= $timeNow AND finishs_at >= $timeNow) AND status= 'on'");
-$adsMobile = $db->findAll("SELECT link, file FROM ad WHERE position='mobile' AND (starts_at <= $timeNow AND finishs_at >= $timeNow) AND status= 'on'");
+$adsFront = $db->findAll("SELECT link, file FROM ad WHERE position='top' AND (startsAt <= $timeNow AND endsAt >= $timeNow) AND status= 'on'");
+$adsMobile = $db->findAll("SELECT link, file FROM ad WHERE position='mobile' AND (startsAt <= $timeNow AND endsAt >= $timeNow) AND status= 'on'");
 
 $level1 = [];
 $level2 = [];
